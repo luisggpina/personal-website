@@ -1,0 +1,144 @@
+% Copyright 2014 Luís Pina
+% 
+% This file is licensed under the Creative Commons Attribution-NoDerivatives 4.0
+% International License. To view a copy of this license, visit
+% http://creativecommons.org/licenses/by-nd/4.0/.
+
+%%%%%%%%%%%%%%%%% Submitted %%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%% 2014 %%%%%%%%%%%%%%%%%
+
+@INPROCEEDINGS{pina14rubah,
+  title = {Rubah: {DSU} for Java on a Stock {JVM}},
+	author={Lu\'{i}s Pina and Lu\'{i}s Veiga and Michael Hicks},
+  booktitle = {Proceedings of the {ACM} Conference on Object-Oriented Programming Languages, Systems, and Applications (OOPSLA)},
+  month = OCT,
+  year = 2014,
+	custom_author={Lu\'{i}s Pina and Lu\'{i}s Veiga and Michael Hicks},
+	custom_pdf = pina14oopsla.pdf,
+	custom_slides = pina14oopslaslides.pdf,
+	custom_github = plum-umd/rubah,
+	abstract = {This paper presents Rubah, the first dynamic software
+    updating system for Java that: is portable, implemented via
+  libraries and bytecode rewriting on top of a standard JVM; is
+  efficient, imposing essentially no overhead on normal, steady-state execution; is
+  flexible, allowing nearly arbitrary changes to classes between updates; and
+  is non-disruptive employing either a novel eager algorithm
+  that transforms the program state with multiple threads, or a novel
+  lazy algorithm that transforms objects as they are demanded,
+  post-update. Requiring little programmer effort, Rubah has been used
+  to dynamically update five
+  long-running applications: the H2 database, the
+  Voldemort key-value store, the Jake2 implementation of the Quake
+  2 shooter game, the CrossFTP server, and the JavaEmailServer.},
+}
+
+%%%%%%%%%%%%%%%%% 2013 %%%%%%%%%%%%%%%%%
+
+@inproceedings{pina13hotswup,
+	author={Lu\'{i}s Pina and Michael Hicks},
+	booktitle={Fifth Workshop on Hot Topics in Software Upgrades},
+	month=JUN,
+	title={Rubah: Efficient, General-purpose Dynamic Software Updating for Java},
+	year=2013,
+	custom_author={Lu\'{i}s Pina and Michael Hicks},
+	custom_pdf = pina13hotswup.pdf,
+	custom_slides = pina13hotswupSlides.pdf,
+	custom_github = plum-umd/rubah,
+	abstract={This paper presents Rubah, a new dynamic software updating (DSU) system for Java programs that works on stock VMs. Rubah supports a large range of program changes (e.g., changes to the class hierarchy and updates to running methods), does not restrict important programming idioms (e.g., reflection), and, as shown by performance experiments using an updatable version of the H2 database management system, imposes low overhead on normal execution.
+	}
+}
+
+%%%%%%%%%%%%%%%%% 2012 %%%%%%%%%%%%%%%%%
+
+@inproceedings{pina12hotswup,
+	author={Lu\'{i}s Pina and Jo\~{a}o Cachopo},
+	booktitle={Fourth Workshop on Hot Topics in Software Upgrades},
+	month={june},
+	title={Atomic Dynamic Upgrades Using Software Transactional Memory},
+	custom_author={Lu\'{i}s Pina and Jo\~{a}o Cachopo},
+	custom_pdf = pina12hotswup.pdf,
+	custom_slides = pina12hotswupSlides.pdf,
+	year=2012,
+	abstract={In this paper, we propose the use of a Software Transactional Memory to implement a Dynamic Software Upgrade system that combines two desirable properties.
+First, it provides a simple semantics to the developer, while allowing upgrades to occur atomically, concurrently with the execution of the program.
+Second, it converts the program’s data lazily, as data is progressively accessed by the execution of the upgraded program.
+We present also experimental results that show that our lazy approach to software upgrades is able to upgrade a system without affecting significantly the maximum response time of the system’s operations, whereas an immediate approach shows values of maximum response time up to three orders of magnitude higher.}
+}
+
+%%%%%%%%%%%%%%%%% 2011 %%%%%%%%%%%%%%%%%
+
+@inproceedings{pina11tmc,
+	address={Portland, Oregon},
+	author={Lu\'{i}s Pina and Jo\~{a}o Cachopo},
+	custom_author={Lu\'{i}s Pina and Jo\~{a}o Cachopo},
+	custom_pdf = pina11tmc.pdf,
+	custom_slides = pina11tmcSlides.pdf,
+	booktitle={Workshop on Transitioning to Multicore (TMC 2011)},
+	month={october},
+	organization={University of California at Santa Cruz},
+	title={Profiling and tuning the performance of an STM-based concurrent program},
+	year=2011,
+	abstract={Over the last years, multicores have become accessible to the common developer.
+Writing concurrent programs that are correct and that display good performance is hard.
+Software Transactional Memory (STM) is a step in the direction of solving the first problem, but it does not provide tools for the programmer to understand and optimize his code's performance, thus leaving the second problem as an open issue.
+
+In this paper, we present a novel technique that informs the developer about which objects cause JVSTM transactions to conflict.
+Then, we describe how we used that technique together with several JVSTM conflict reduction techniques to improve the performance of a transactional application.}
+}
+
+@techreport{pina11reducing,
+	author={Lu\'{i}s Pina and Jo\~{a}o Cachopo},
+	custom_author={Lu\'{i}s Pina and Jo\~{a}o Cachopo},
+	custom_pdf = pina11reducingTR.pdf,
+	month={august},
+	number={39/2011},
+	organization={INESC-ID},
+	title={Reducing conflicts on JVSTM transactions - STMBench7: A case study},
+	year=2011,
+	abstract={Over the last years, multicores have become accessible to the common developer. Writing concurrent programs that are correct and that display good performance is hard. Software Transactional Memory (STM) is a step in the direction of solving the first problem, but it does not provide tools for the programmer to understand and optimize his code’s performance, thus leaving the second problem as an open issue.
+
+In this paper, we present a novel technique that informs the developer about which objects cause JVSTM transactions to conflict. Then, we describe how we used that technique together with several JVSTM conflict reduction techniques to improve the performance of a transactional application.}
+}
+
+@techreport{pina11dustm,
+	author={Lu\'{i}s Pina and Jo\~{a}o Cachopo},
+	custom_author={Lu\'{i}s Pina and Jo\~{a}o Cachopo},
+	custom_pdf = pina11dustmTR.pdf,
+	month={june},
+	number={32/2011},
+	organization={INESC-ID},
+	title={DuSTM - Dynamic Software Upgrades using Software Transactional Memory},
+	year=2011,
+	abstract={Upgrading a running program without stopping it is increasingly important in a world where users have grown to expect zero downtime from software services. And yet, surprisingly, no capable system exists that fulfills this promise: Developing a dynamic software upgrade system has proved to be a very challenging task.  
+In this paper we present the design and implementation of a practical dynamic software upgrade system for Java that tackles some of the most difficult challenges in the implementation of such a system. Namely, how to provide programmers with a simple programming model for specifying the program’s data conversion logic without incurring into unacceptable pauses during an upgrade.  
+Our solution uses a multiversioned Software Transactional Memory to allow software upgrades that occur atomically, concurrently with the execution of the program, and that convert the program’s data lazily, as data is progressively accessed by the execution of the upgraded program.  We show that our lazy approach to software upgrades is able to upgrade a system without affecting significantly the maximum response time of the system’s operations, whereas an immediate approach shows values of maximum response time up to three orders of magnitude higher.}
+}
+
+%%%%%%%%%%%%%%%%% 2009 %%%%%%%%%%%%%%%%%
+
+@masterthesis{pina09msc,
+	author={Lu\'{i}s Pina},
+	month={november},
+	custom_author={Lu\'{i}s Pina},
+	custom_pdf = pina09msc.pdf,
+	organization={Instituto Superior Técnico},
+	title={Atomic Dynamic Software Upgrades Using Software Transactional Memories },
+	year=2009,
+	abstract={The upgrade of a running program is often a disruptive operation that involves stopping and restarting the program's execution. Yet, software upgrades are unavoidable. Unfortunately, current solutions for dynamic upgrades are either incomplete or not practical. Systems that have high availability requirements implement upgrades through a combination of application-specific software and redundant hardware. However, such systems lack support to migrate the state of the running program to a state that is compatible with the program that the upgrade introduces. Typically, they migrate the persisted data only and the data migration process may impose a long pause on the application.
+
+To ensure the atomicity of the upgrade and data migration operations, but still allow them to execute in parallel with the rest of the system, thereby avoiding the restart of the system or long pauses, I introduce a conceptual model that defines the semantics of the upgrade system, and that may be implemented with any STM and programming language. Furthermore, the upgrade system that I propose and the data migration process can be integrated seamlessly with modern software engineering methodologies. I describe an implementation of the proposed upgrade system for the Java platform that uses JVSTM. I implemented a prototype of the upgrade system that is able to perform a significant number of different types of upgrades to a running Java application without stopping it, providing thus a proof of concept that the implementation of the upgrade system is feasible.}
+}
+
+@inproceedings{pina09dsn,
+	author={Lu\'{i}s Pina},
+	custom_author={Lu\'{i}s Pina},
+	custom_pdf = pina09dsn.pdf,
+	booktitle={Proceedings of the International Conference on Dependable Systems and Networks (DSN)},
+	month={june},
+	organization={FCUL},
+	title={Towards a Pragmatic Atomic Dynamic Software Upgrade System},
+	year=2009,
+  note = {Student Forum},
+	abstract={The upgrade of a running program is often a disruptive operation that involves stopping and restarting the program's execution, becoming, thus, a serious problem for dependable systems. Yet, software upgrades are unavoidable. Unfortunately, current solutions for dynamic software upgrades are either incomplete or not practical. In this paper, I layout the foundations for a new dynamic software upgrade system that provides atomic upgrades and is designed to integrate seamlessly with the current software development practices. This new upgrade system leverages on a software transactional memory to ensure that all the requests of an upgraded system are processed in a consistent state of the program, either before or after the upgrade.}
+}

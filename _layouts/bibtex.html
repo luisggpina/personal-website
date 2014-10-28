@@ -1,0 +1,47 @@
+---
+# Copyright 2014 Luís Pina
+#
+# This file is part of Luís Pina personal website.
+#
+#    Luís Pina personal website is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    Luís Pina personal website is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with Luís Pina personal website.  If not, see <http://www.gnu.org/licenses/>.
+layout: default
+---
+	<h1>{{ page.entry.title }}</h1>
+	<p>
+		{{ page.entry.custom_author }}<br/>
+		In {{ page.entry.booktitle }}<br/>
+		{{ page.entry.year }}
+	</p>
+	<h3>Abstract</h3>
+  <p>{{ page.entry.abstract }}</p>
+	{% if page.entry.custom_pdf || page.entry.custom_slides %}
+	<h3>Downloads</h3>
+	<div style="margin-bottom: 30px">
+		{% if page.entry.custom_pdf %}
+		|
+		<a href="{{ site.url }}/pdfs/{{ page.entry.custom_pdf }}" target="_blank">PDF</a>
+		{% endif %}
+		{% if page.entry.custom_slides %}
+		|
+		<a href="{{ site.url }}/pdfs/{{ page.entry.custom_slides }}" target="_blank">slides</a>
+		{% endif %}
+		{% if page.entry.custom_github %}
+		|
+		<a href="https://github.com/{{ page.entry.custom_github }}" target="_blank">github project</a>
+		{% endif %}
+		|
+	</div>
+	{% endif %}
+	<h3>Bibtex</h3>
+	<pre>{{ page.entry.bibtex }}</pre>

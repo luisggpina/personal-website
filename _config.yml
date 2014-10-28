@@ -1,0 +1,47 @@
+# Copyright 2014 Luís Pina
+#
+# This file is part of Luís Pina personal website.
+#
+#    Luís Pina personal website is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    Luís Pina personal website is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with Luís Pina personal website.  If not, see <http://www.gnu.org/licenses/>.
+
+safe:         false
+url:          http://www.luispina.me
+baseurl:      http://www.luispina.me
+
+source:       .
+destination:  ./__site
+plugins:      ./_plugins
+exclude:      [ LICENSE.gplv2, README.md, app.yaml ]
+
+markdown:     kramdown
+permalink:    date
+
+kramdown:
+  auto_ids:       true,
+  footnote_nr:    1
+  entity_output:  as_char
+  toc_levels:     1..6
+
+scholar:
+  style:          _bibliography/myapa.csl
+  bibtex_filters:
+    myfilter
+
+  details_link:   '&nbsp;'
+  details_layout: bibtex.html
+  details_dir:    bibliography
+
+  bibliography:           references.bib
+  bibliography_template:  bibliography
+  repository:             pdfs
