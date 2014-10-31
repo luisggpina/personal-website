@@ -1,0 +1,41 @@
+---
+# Copyright 2014 Luís Pina
+#
+# This file is licensed under the Creative Commons Attribution-NoDerivatives 4.0
+# International License. To view a copy of this license, visit
+# http://creativecommons.org/licenses/by-nd/4.0/.
+#
+layout: default
+title: research
+group: "research"
+---
+<div id='weebly_page_content_container'>
+	<h1  style=" text-align: left; ">Publications (sorted by year)</h1>
+
+	<h2>2014</h2>
+	{% bibliography --style _bibliography/myapa.list.csl --file references.site --query @*[year=2014] %}
+
+	<h2>2013</h2>
+
+	{% bibliography --style _bibliography/myapa.list.csl --file references.site --query @*[year=2013] %}
+
+	<h2>2012</h2>
+
+	{% bibliography --style _bibliography/myapa.list.csl --file references.site --query @*[year=2012] %}
+
+	<h2>2011</h2>
+
+	{% bibliography --style _bibliography/myapa.list.csl --file references.site --query !@techreport[year=2011] %}
+
+	<b>Tech-reports</b>
+	{% bibliography --style _bibliography/myapa.list.csl --file references.site --query @techreport[year=2011] %}
+
+	<h2>2009</h2>
+
+	{% bibliography --style _bibliography/myapa.list.csl --file references.site --query !@masterthesis[year=2009] %}
+
+	<b>Master's Thesis</b>
+	{% bibliography --style _bibliography/myapa.list.csl --file references.site --query @masterthesis[year=2009] %}
+
+
+</div>
