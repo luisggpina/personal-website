@@ -1,0 +1,29 @@
+---
+# Copyright 2014 Luís Pina
+#
+# This file is licensed under the Creative Commons Attribution-NoDerivatives 4.0
+# International License. To view a copy of this license, visit
+# http://creativecommons.org/licenses/by-nd/4.0/.
+#
+layout: default
+title: blog
+group: "blog"
+---
+<div id='weebly_page_content_container'>
+	<h2  style=" text-align: left; ">Posts</h2>
+
+	<ul>
+		{% for post in site.posts %}
+		<li>
+		<a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">
+			<span class="date">
+				<span class="day">{{ post.date | date: '%d' }}</span>
+				<span class="month"><abbr>{{ post.date | date: '%b' }}</abbr></span>
+				<span class="year">{{ post.date | date: '%Y' }}</span>
+			</span>
+			<span class="title" style="margin-left: 15px;">{{ post.title }}</span>
+		</a>
+		</li>
+		{% endfor %}
+	</ul>
+</div>
