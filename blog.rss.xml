@@ -1,0 +1,43 @@
+---
+# Copyright 2014 Luís Pina
+#
+# This file is part of Luís Pina personal website.
+#
+#    Luís Pina personal website is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    Luís Pina personal website is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with Luís Pina personal website.  If not, see <http://www.gnu.org/licenses/>.
+layout: nil
+---
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+
+  <channel>
+    <title>Luís Pina personal blog</title>
+		<link>{{ site.url }}/blog.html</link>
+		<atom:link href="{{ site.url}}/blog.rss.xml" rel="self" type="application/rss+xml" />
+    <description>Personal blog of Luís Pina</description>
+    <language>en-us</language>
+    <pubDate>{{ site.time | date: "%a, %d %b %Y %H:%M:%S %Z" }}</pubDate>
+    <lastBuildDate>{{ site.time | date: "%a, %d %b %Y %H:%M:%S %Z" }}</lastBuildDate>
+
+    {% for post in site.posts %}
+      <item>
+        <title>{{ post.title }}</title>
+				<link>{{ site.url }}{{ post.url }}</link>
+        <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %Z" }}</pubDate>
+        <author>Luís Pina</author>
+				<guid>{{ site.url }}{{ post.url }}</guid>
+      </item>
+    {% endfor %}
+
+  </channel>
+</rss>
