@@ -215,6 +215,111 @@ together was around 8%, and not 10%.
 How to make sun.misc.Unsafe safer
 =================================
 
+Useful as it might be, sun.misc.Unsafe is a proprietary API that will disappear
+in future releases of the HotSpot JVM. There is a JEP draft (TODO link) to
+"create a public API replacement for sun.misc.Unsafe to prevent people from
+accessing a private package in form of a direct memory kind of buffer and a
+support class for other sun.misc.Unsafe operations independently from buffer
+like memory operations".
+
+It looks like the main motivation for this JEP is to bring off-heap buffers to
+the standard API. Off-heap buffers are out of the reach of the
+garbage-collector, and using can improve performance or make performance more
+predictable with no pauses for a garbage-collector cycle.
+
+Rubah, however, relies on features of sun.misc.Unsafe that might disappear. In
+this section, I propose some alternatives to make those features safe so that
+they can be made part of the standard Java API. I do not comment on the
+features Rubah uses that are planned to be ported to the standard API.
+
+* **Identity hash-code**
+
+	The simplest approach, assuming that a method similar to
+	sun.misc.Unsafe.allocateInstance makes it to the standard API, is to add an
+	integer argument that sets the identity hash-code to be the least significant 24
+	bits (the size of a Java hash-code) of that integer argument. TODO: Check that
+	the size of a Java hash-code is actually 24 bits.
+
+	Assuming that this method does not make it to the standard API, Rubah could
+	still allocate instances without running any real constructor by adding dummy
+	constructors to every class that do not do anything interesting. Still, Rubah
+	needs to set the identity hash-code of the new object being constructed.
+
+	In this scenario, note that setting the identity hash-code of an object that
+	has just been created, before the method that creates that object makes any
+	reference to the new object visible to any other part of the program, is safe.
+	The invariant that the identity hash-code does not change during the lifetime of
+	the object is kept, except for the code that actually changes the identity
+	hash-code. I claim that this behavior is safe and acceptable.
+
+	The bytecode sequence that creates an object involves a NEW instruction and a
+	INVOKESPECIAL instruction to invoke a constructor of the superclass on the newly
+	created object. Between these two bytecodes, the object is instantiated but
+	not constructed. The JVM uses escape analysis to ensure that no references to
+	this object get leaked by, for instance, writing it to some field or passing it
+	as argument to some function. This check is made by the bytecode verifier, and
+	the JVM refuses to load any code that fails this check.
+
+	This is the right moment to set the identity hash-code of the new object. One
+	option is to add a special method to do this and pass the object to that method.
+	However, this requires changing the bytecode verifier to allow this method
+	invocation.
+
+	Another option is to add an extra constructor to java.lang.Object that takes
+	an integer and sets the identity hash-code to that value. The bytecode verifier
+	remains unchanged, but we are now exposing a new constructor that should almost
+	never be used. This problem could be mitigated by making this method invisible
+	to the compiler and only accessible through method handles, which were added in
+	Java 8 to allow invoking methods more efficiently than by using the reflection
+	API.  TODO add link to description of method handles, check if method handles
+	can be used to call constructors. And improve the description of what method
+	handles are.
+
+	Yet another option is to have the developer add a constructor that takes an
+	integer as the first argument and has a special annotation to note that such
+	argument is actually the identity hash-code of the object being constructed. Or,
+	instead of an integer, that argument has a special type (e.g.
+	java.lang.IdentityHashCode), so that it does not collide with any existing
+	constructor that already takes an integer.
+
+* **Changing the class of an object**
+
+	The JVM keeps the invariant that the class of a given object does not change
+	during the lifetime of that object. Therefore, no matter how safe we make this
+	operation, it violates this invariant by design. This is our starting point in
+	making this operation safe.
+
+	Rubah gets away with it because it traverses the heap and fixes references to
+	instances of java.lang.Class. So, if some structure maps classes to objects of
+	that class, Rubah changes the class of every object and the instance of
+	java.lang.Class associated with it (e.g.  Rubah supports updating instances kept
+	in a java.util.EnumMap, which does something similar). TODO link to grepcode
+
+	However, finding some way to relax this invariant would lead to efficient
+	implementation of proxies. A proxy, in this sense, is a class that extends the
+	proxied class, does not define any fields, and overrides all methods to redirect
+	the invocation to some other new method that the developer can customize. From
+	the point of view of the memory model, a proxy looks exactly the same as the
+	proxied instance (same size, same fields at the same offset) except for the
+	_klass pointer. Proxying an object, or turning an existing proxy into a real
+	object would be as simple as a writing one pointer to memory.
+
+	To change the class of an object safely to another class that defines a
+	different set of fields in this way, by changing the _klass pointer, we have to
+	place restrictions on how different the set of fields can be. The idea is that
+	the representation of the object in memory should, at least, have the same size.
+	So, we can require the new class to define the same number of fields of the same
+	broad type (reference or same primitive type). TODO: change this broad type by a
+	more approriate term.
+
+	If this pre-condition is met, we can take a CLOS-like approach to map the
+	fields: Pass, as an argument to the method that changes the class, a method
+	handle that takes an array of java.lang.Object, in which each position is a
+	field that the object has, and returns an array of java.lang.Object, in which
+	each position is compatible with the respective field on the new type. TODO: add
+	links to the CLOS meta-object protocol that does this, the common LISP should be
+	available on-line.
+
 * Direct field access
   * Field handlers? Research this
 * Identity hash code
