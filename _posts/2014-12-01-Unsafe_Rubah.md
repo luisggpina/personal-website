@@ -26,14 +26,64 @@ What is sun.misc.Unsafe?
 The class sun.misc.Unsafe is a proprietary API that enables a Java program to
 escape the control of the JVM and perform potentially unsafe operations, like
 direct memory manipulation. Here is a list of interesting methods that this API
-has:
+has (]more documentation available
+here](http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/7u40-b43/sun/misc/Unsafe.java/)):
 
-TODO
+<pre><code class="java">
+public class Unsafe {
+	// use reflection instead, this method throws an exception if the calling
+	// class is not on the bootstrap classpath
+	public static Unsafe getUnsafe();
 
-For instance, the following code sets an array position to zero with method TODO
-without performing any bounds check operation.
+	// static field/Object field/array manipulation utilities
+	public Object staticFieldBase    (Field f);
+	public long   staticFieldOffset  (Field f);
+	public long   objectFieldOffset  (Field f);
+	public int    arrayBaseOffset    (Class c);
+	public int    arrayIndexScale    (Class c);
 
-TODO2
+	// reference-type field manipulation
+	public Object getObject (Object o, long offset);
+	public void   putObject (Object o, long offset, Object x);
+
+	// int-type field manipulation (repeated for every other primitive type)
+	public int    getInt    (Object o, long offset);
+	public void   putInt    (Object o, long offset, int x);
+
+	// compare-and-swap object/int/long
+	public boolean compareAndSwapObject (Object o, long offset, Object expected, Object x);
+	public boolean compareAndSwapInt    (Object o, long offset, int expected,    int x);
+	public boolean compareAndSwapLong   (Object o, long offset, long expected,   long x);
+
+	// allocate instance without running constructors
+	public Object allocateInstance (Class cls);
+
+	// try entering a monitor, fail with false instead of blocking if not able to
+	public boolean tryMonitorEnter (Object o);
+
+}
+</code></pre>
+
+For instance, the following code sets an entire integer array to 1 using the
+unsafe API to avoid any bounds check.
+
+<pre><code class="java">
+// For this to work, add the class to the bootstrap classloader by passing
+// the option -Xbootclasspath/a:. to the java command
+Unsafe u    = Unsafe.getUnsafe();
+int   size  = 1 << 16;
+int[] array = new int[size];
+int   base  = u.arrayBaseOffset(Integer.class);
+int   scale = u.arrayIndexScale(Integer.class);
+
+for (int i = 0 ; i < size ; i++)
+  u.putInt(array, (base + i * scale), 1);
+
+// Nothing prevents me writting out of bounds:
+// u.putInt(array, (base + size * scale), 1);
+// Or reading:
+// u.getInt(array, (base + size * scale));
+</code></pre>
 
 While this is indeed faster than regular Java array manipulation, it may lead to
 out-of-bounds operations that can be exploited maliciously (link to wikipedia
@@ -67,7 +117,21 @@ array.
 A similar pattern applies to manipulating objects, as we can see in the
 following example:
 
-TODO
+<pre><code class="java">
+// For this to work, add the class to the bootstrap classloader by passing
+// the option -Xbootclasspath/a:. to the java command
+Unsafe u     = Unsafe.getUnsafe();
+LinkedList l = new LinkedList();
+Class c      = LinkedList.class;
+Field f      = c.getDeclaredField("first");
+long  offset = u.objectFieldOffset(f);
+
+u.getObject(l, offset);
+u.putObject(l, offset, null);
+
+// Nothing prevents me writting a wrong type:
+// u.putObject(l, offset, new Object());
+</code></pre>
 
 Again, it starts by getting the base pointer with method TODO. Then, it gets the
 offset of the field within the object with method TODO. And finally, it
@@ -171,6 +235,30 @@ grepcode).
 	Rubah now writes the identity hash-code of the new instance directly in the
 	object header using the unsafe API. This works objects and arrays and removes
 	the performance overhead.
+
+<pre><code class="java">
+// For this to work, add the class to the bootstrap classloader by passing
+// the option -Xbootclasspath/a:. to the java command
+Unsafe u     = Unsafe.getUnsafe();
+Object o     = new Object();
+
+// Valid for a 64 bit JVM with compressed oops
+// Might not work for different architectures
+long offset  = 1L;
+
+int newHash  = 42;
+
+int identityHashCode = System.identityHashCode(o);
+int unsafeHashCode   = u.getInt(o, offset);
+
+assert (identityHashCode == unsafeHashCode != newHash); 
+u.putInt(o, offset, newHash);
+
+int identityHashCode = System.identityHashCode(o);
+int unsafeHashCode   = u.getInt(o, offset);
+
+assert (identityHashCode == unsafeHashCode == newHash);
+</code></pre>
 	
 * **Changing the class of existing objects**
 
@@ -208,6 +296,36 @@ grepcode).
 	Option (1) would require a deep copy of the whole heap, so we discarded it from
 	the start. Early versions of Rubah implemented option (2), thus adding a steady
 	state overhead of 5%.
+
+<pre><code class="java">
+class A { /* empty */ }
+class B { /* empty */ }
+
+// For this to work, add the class to the bootstrap classloader by passing
+// the option -Xbootclasspath/a:. to the java command
+Unsafe u     = Unsafe.getUnsafe();
+Object a     = new A();
+Object b     = new B();
+
+// Valid for a 64 bit JVM with compressed oops
+// Might not work for different architectures
+long offset  = 8L;
+
+// Do not keep this around for long, it changes over time
+int klass    = u.getInt(a, offset);
+
+assert (a instanceof A);
+assert (b instanceof B);
+
+u.putInt(b, offset, klass);
+
+assert (a instanceof A);
+// If this code gets JITed, the following line may terminate the JVM with SIGSEGV
+assert (b instanceof A);
+</code></pre>
+
+The code examples in this section were taken from a class in Rubah called
+[UnsafeUtils](https://github.com/plum-umd/rubah/blob/master/src/main/java/rubah/runtime/state/migrator/UnsafeUtils.java).
 
 Footnote: The steady-state overhead of the type-erasure AND hash-code field
 together was around 8%, and not 10%.
