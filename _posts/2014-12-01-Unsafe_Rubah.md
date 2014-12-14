@@ -11,6 +11,7 @@ tags:       java, unsafe, rubah, jvm
 group:      "blog"
 published:  true
 highlight:	true
+raphael:		true
 ---
 
 In this post explain how Rubah uses sun.misc.Unsafe to implement the
@@ -152,9 +153,79 @@ offset of the field within the object with method TODO. And finally, it
 manipulates the field with method TODO.
 
 This code pattern maps directly to the way the JVM lays objects in memory. The
-following figure shows how objects and arrays look in memory:
+following figure shows how objects look in memory:
 
-TODO
+<div id="obj_layout" style="width: 100%; height: 150px" >
+</div>
+
+<script type="text/javascript">
+	var w = 700;
+	var h = 150;
+	var w_bit = 2;
+	var w_len = 64 * w_bit;
+	function addLabelToWord(word, label) {
+		var bbox    = word.getBBox();
+		var label_x = bbox.x + (bbox.width/2);
+		var label_y = bbox.y + (bbox.height/2);
+ 
+		paper.text(label_x, label_y, label).attr({
+			"font-size": 16,
+			"text-anchor": "middle"
+		});
+	}
+	function addLabelToBits(word, start, end, label, level) {
+		var bbox    = word.getBBox();
+		var level		= 10 + 30 * level;
+		var start_x	= bbox.x + (start * w_bit) + 1;
+		var end_x		= bbox.x + (end * w_bit) - 1;
+		var y 			= bbox.y + bbox.height + level;
+		var label_x	= start_x + ((end - start) * w_bit / 2);
+		var label_y	= y + 10;
+ 
+		paper.path("M"+start_x+","+y+"L"+end_x+","+y).attr({
+			//"arrow-end": "classic-wide-long",
+			//"arrow-start": "classic-wide-long"
+		});
+ 
+		paper.text(label_x, label_y, label).attr({
+			"font-size": 14,
+			"text-anchor": "middle"
+		});
+	}
+  var paper = new Raphael('obj_layout');
+	paper.setViewBox(0, 0, w, h, true);
+	paper.canvas.setAttribute('preserveAspectRatio', 'none');	
+
+	var mark	= paper.rect(30, 30, w_len, 30).attr({
+      fill : "white",
+      stroke : "black",
+      strokeWidth : 2
+  });
+	addLabelToWord(mark, "_mark", true);
+	addLabelToBits(mark,  0, 31, "hash", 0);
+	addLabelToBits(mark, 31, 35, "age",  0);
+	addLabelToBits(mark, 59, 63, "001",  0);
+
+	addLabelToBits(mark,  0, 59, "ptr",  1);
+	addLabelToBits(mark, 59, 63, "lock", 1);
+
+	var klass = mark.clone();
+	klass.transform("t" + w_len + ",0");
+	addLabelToWord(klass, "_klass");
+
+	var field2 = klass.clone();
+	field2.transform("t" + 2.75 * w_len + ",0");
+	addLabelToWord(field2, "...");
+
+	var field1 = klass.clone();
+	field1.transform("t" + 2 * w_len + ",0");
+	addLabelToWord(field1, "field 1");
+
+	var fieldN = klass.clone();
+	fieldN.transform("t" + 3.5 * w_len + ",0");
+	addLabelToWord(fieldN, "field N");
+
+</script>
 
 Given the similarity between the HotSpot and the OpenJDK, I shall use the
 OpenJDK names in the description of the object memory layout, with links to the
@@ -166,10 +237,12 @@ sized header that has two fields, as defined by the header file
 	Defined in header file
 [src/share/vm/oops/markOop.hpp](http://hg.openjdk.java.net/jdk7u/jdk7u/hotspot/file/f49c3e79b676/src/share/vm/oops/markOop.hpp). One word (32 or 64 bits, depending on the architecture) that contains either:
 	* Regular case:
-		* **hash** Identity hash code
-		* **age**  GC information about the age of the object
+		* **hash** Identity hash code;
+		* **age**  GC information about the age of the object;
+		* Some unused bits to keep the _mark field word-aligned;
 	* Locked object:
-		* **ptr**  pointer to where the header is (either on the stack or wrapped by an inflated lock)
+		* **ptr**  pointer to where the header is (either on the stack or wrapped by an inflated lock);
+		* **lock** state of the lock (biased/inflated), 001 means not locked;
 * **_klass**: Defined in header file
 [src/share/vm/oops/klassOop.hpp](http://hg.openjdk.java.net/jdk7u/jdk7u/hotspot/file/f49c3e79b676/src/share/vm/oops/klassOop.hpp).
 Quoting the source: "A klassOop is the C++ equivalent of a Java class".

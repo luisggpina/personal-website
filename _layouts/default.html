@@ -52,6 +52,11 @@ _gaq.push(['_trackPageview']);
 			<script>hljs.initHighlightingOnLoad();</script>
 		{% endif %}
 
+		{% if page.raphael %}
+			<!-- raphael -->
+			<script src="{{ site.url}}/js/raphael-min.js" type="text/javascript"></script>
+		{% endif %}
+
     <!-- Bootstrap -->
     <link href="{{ site.url }}/css/bootstrap.min.css" rel="stylesheet">
 
