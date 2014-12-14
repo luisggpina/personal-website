@@ -45,10 +45,12 @@ _gaq.push(['_trackPageview']);
 
 		</script>
 
-		<!-- highlight.js -->
-		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css" />
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
-		<script>hljs.initHighlightingOnLoad();</script>
+		{% if page.highlight %}
+			<!-- highlight.js -->
+			<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css" />
+			<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+			<script>hljs.initHighlightingOnLoad();</script>
+		{% endif %}
 
     <!-- Bootstrap -->
     <link href="{{ site.url }}/css/bootstrap.min.css" rel="stylesheet">

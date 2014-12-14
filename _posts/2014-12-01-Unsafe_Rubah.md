@@ -10,6 +10,7 @@ title:      Usages of sun.misc.Unsafe within Rubah
 tags:       java, unsafe, rubah, jvm
 group:      "blog"
 published:  true
+highlight:	true
 ---
 
 In this post explain how Rubah uses sun.misc.Unsafe to implement the
