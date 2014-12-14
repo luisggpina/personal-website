@@ -26,7 +26,7 @@ What is sun.misc.Unsafe?
 The class sun.misc.Unsafe is a proprietary API that enables a Java program to
 escape the control of the JVM and perform potentially unsafe operations, like
 direct memory manipulation. Here is a list of interesting methods that this API
-has (]more documentation available
+has ([more documentation available
 here](http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/7u40-b43/sun/misc/Unsafe.java/)):
 
 <pre><code class="java">
@@ -86,8 +86,8 @@ for (int i = 0 ; i < size ; i++)
 </code></pre>
 
 While this is indeed faster than regular Java array manipulation, it may lead to
-out-of-bounds operations that can be exploited maliciously (link to wikipedia
-heartbleed).
+out-of-bounds operations that can be [exploited
+maliciously](http://en.wikipedia.org/wiki/Heartbleed).
 
 The unsafe API is used extensively throughout the java.util.concurrent package
 to perform atomic compare-and-swap operations and volatile read/write on arrays.
@@ -98,12 +98,25 @@ API.
 Most of these operations can also be made through JNI native code. However,
 using the unsafe API is more efficient because it avoids the cost of context
 switch from Java to JNI and back. Besides, the JIT compiles some calls to the
-unsafe API directly to JVM intrinsics.
+unsafe API directly to JVM intrinsics[^intrinsics].
 
-TODO: Footnote explaining that an intrinsic is a special internal implementation
-of a method. For instance, calling System.identityHashCode is translated to an
-intrinsic operation that just reads the hash code from the object header in a
-few assembly instructions, rather than calling a method.
+[^intrinsics]:
+
+	From [wikipedia](http://en.wikipedia.org/wiki/Intrinsic_function):
+
+	> In compiler theory, an intrinsic function is a function
+  > available for use in a given programming language whose implementation is
+  > handled specially by the compiler. Typically, it substitutes a sequence of
+  > automatically generated instructions for the original function call, similar to
+  > an inline function. Unlike an inline function though, the compiler has an
+  > intimate knowledge of the intrinsic function and can therefore better integrate
+  > it and optimize it for the situation. This is also called builtin function in
+  > many languages.
+
+	For instance, calling
+	[System.identityHashCode](http://docs.oracle.com/javase/7/docs/api/java/lang/System.html#identityHashCode(java.lang.Object))
+	is compiled to an intrinsic operation that just reads the hash code from the
+	object header in a few native instructions, rather than to a method call.
 
 HotSpot (and OpenJDK) JVM memory model
 ======================================
@@ -140,56 +153,56 @@ manipulates the field with method TODO.
 This code pattern maps directly to the way the JVM lays objects in memory. The
 following figure shows how objects and arrays look in memory:
 
-Footnote above mentioning the OpenJDK header file that defines the JVM object layout.
-
 TODO
 
-Every object and array starts with a fixed sized header that has two fields:
-_mark and _klass. For unlocked objects, field _mark has the identity hash-code
-and a set of bits that the JVM uses to keep miscelaneous metadata (locked state
-and GC state). For locked objects, the _mark has the address of a lock structure
-that has information about which threads are waiting for the lock, plus the
-identity hash-code and the GC metadata. For the sake of simplicity, let us just
-assume that objects are always unlocked. Field _klass represents the class of
-the objects and keeps low-level data about it (the size of each object, the
-method vtable, etc).
+Given the similarity between the HotSpot and the OpenJDK, I shall use the
+OpenJDK names in the description of the object memory layout, with links to the
+relevant header files in the OpenJDK source.  Every object starts with a fixed
+sized header that has two fields, as defined by the header file
+[src/share/vm/oops/oop.hpp](http://hg.openjdk.java.net/jdk7u/jdk7u/hotspot/file/f49c3e79b676/src/share/vm/oops/oop.hpp):
 
-TODO: Turn paragraph above into a definition list
+* **_mark**:
+	Defined in header file
+[src/share/vm/oops/markOop.hpp](http://hg.openjdk.java.net/jdk7u/jdk7u/hotspot/file/f49c3e79b676/src/share/vm/oops/markOop.hpp). One word (32 or 64 bits, depending on the architecture) that contains either:
+	* Regular case:
+		* **hash** Identity hash code
+		* **age**  GC information about the age of the object
+	* Locked object:
+		* **ptr**  pointer to where the header is (either on the stack or wrapped by an inflated lock)
+* **_klass**: Defined in header file
+[src/share/vm/oops/klassOop.hpp](http://hg.openjdk.java.net/jdk7u/jdk7u/hotspot/file/f49c3e79b676/src/share/vm/oops/klassOop.hpp).
+Quoting the source: "A klassOop is the C++ equivalent of a Java class".
+This is where the vtable is located, together with more low level information
+about each object of each particular class, such as its size and the offset where
+to find each field.
 
-The fields of regular object follow the header. The class defines the fields and
-their order. On the HotSpot JVM, all objects of the same class have the same
-fields in the same offset. On arrays, the header is followed by an integer that
-specifies the length of the array. The elements of the array start after that.
+The header of an array also starts with the same two fields.  It has, however,
+an extra field, as defined by header file 
+[src/share/vm/oops/arrayOop.hpp](http://hg.openjdk.java.net/jdk7u/jdk7u/hotspot/file/f49c3e79b676/src/share/vm/oops/arrayOop.hpp):
 
-## Manipulating the object model ##
-
-* What lies before the offset?
-  * _mark
-  * _klass
-  * array size
-  * header file in OpenJDK that defines this
-* Can we modify it?
-  * Change the identity hash code
-    * Thin locks
-  * Change the _klass
-    * Careful with JIT inlining
-    * _klass changes over time/GC
-  * Unused bits on 64 bits _mark
-    * May change in the future
+* **lenght**: Size of this particular array
 
 Manipulating the object model
 =============================
 
 As you can imagine by now, Rubah uses the unsafe API to manipulate the metadata
-on the object header. This is extremely unsafe and getting it right was itself
-an important implementation challenge. Doing this is also very brittle because
-the unsafe API is not part of the standard Java API. Future versions of the
-HotSpot JVM are free to change how objects are layed out in memory.
+on the object header. This is extremely unsafe [^portability] and getting it
+right was itself an important implementation challenge. Doing this is also very
+brittle because the unsafe API is not part of the standard Java API.  Future
+versions of the HotSpot JVM are free to change how objects are layed out in
+memory.
 
-TODO footnote about portability: VMMagic on Jikes would allow Rubah to be
-implemented on Jikes. Rubah could be, therefore, implemented without changing
-Othe Jikes JVM. Ither DSU systems that require modifications to the GC algorithm
-are harder to port to different JVMs.
+[^portability]:
+
+	To work with a different JVM, Rubah needs to be ported to use the memory
+	layout of objects on that JVM.  For instance, Rubah can be ported to the Jikes
+	RVM , which has a similar object memory layout, but all the sun.misc.Unsafe
+	operations have to be rewritten to use instead [VM
+	Magic](http://en.wikipedia.org/wiki/Jikes_RVM#VM_Magic).
+
+	We argue that Rubah is portable between JVMs because it does not require any
+	modification to the JVM itself.  Other DSU systems for Java require a custom GC
+	algorithm and are much harder to port to different JVMs.
 
 In the following, I list all the different ways Rubah manipulates the header
 using the unsafe API:
@@ -202,12 +215,15 @@ using the unsafe API:
 
 	Also, both the migration algorithms that Rubah has (parallel and lazy) use
 	compare-and-swap to ensure correctness while migrating the program state. The
-	unsafe API is the only way to perform this operation on regular fields.
+	unsafe API is the only way to perform this operation on regular fields.[^cas]
 
-Footnote: If you want to be able to use the compare-and-swap operation safely in
-your code, you should use AtomicReferences --- part of the java.util.concurrent
-package --- which themselves are implemented using the unsafe API (link to
-grepcode).
+[^cas]:
+
+	The only way to perform compare-and-swap in a Java program without using the
+	unsafe API is to use class
+	[java.util.concurrent.AtomicReference](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/AtomicReference.html#compareAndSet(V,%20V))
+	,which is [internally implemented using the unsafe
+	API](http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/7u40-b43/java/util/concurrent/atomic/AtomicReference.java#AtomicReference.compareAndSet%28java.lang.Object%2Cjava.lang.Object%29).
 
 * **Identity hash-code**
 
@@ -230,7 +246,7 @@ grepcode).
 	Migrating the identity hash-code was not just a matter of migrating another
 	field. However, this prevents the JIT compiler to use intrinsic operations to access
 	the identity hash-code efficiently. As a result, this added about 5% overhead to
-	steady-state execution. Also, it does not work for arrays.
+	steady-state execution. Also, it does not work for arrays.[^overhead]
 
 	Rubah now writes the identity hash-code of the new instance directly in the
 	object header using the unsafe API. This works objects and arrays and removes
@@ -295,7 +311,7 @@ assert (identityHashCode == unsafeHashCode == newHash);
 	Object and inject the appropriate cast before every bytecode that reads fields.
 	Option (1) would require a deep copy of the whole heap, so we discarded it from
 	the start. Early versions of Rubah implemented option (2), thus adding a steady
-	state overhead of 5%.
+	state overhead of 5%.[^overhead]
 
 <pre><code class="java">
 class A { /* empty */ }
@@ -327,8 +343,10 @@ assert (b instanceof A);
 The code examples in this section were taken from a class in Rubah called
 [UnsafeUtils](https://github.com/plum-umd/rubah/blob/master/src/main/java/rubah/runtime/state/migrator/UnsafeUtils.java).
 
-Footnote: The steady-state overhead of the type-erasure AND hash-code field
-together was around 8%, and not 10%.
+[^overhead]:
+
+	The steady-state overhead of the type-erasure **AND** hash-code field
+	together was around 8%, and not 10% as the reader might expect.
 
 How to make sun.misc.Unsafe safer
 =================================
