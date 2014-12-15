@@ -49,7 +49,12 @@ _gaq.push(['_trackPageview']);
 			<!-- highlight.js -->
 			<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css" />
 			<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
-			<script>hljs.initHighlightingOnLoad();</script>
+			<script>
+				hljs.configure({
+						tabReplace:	'  ',
+				});
+				hljs.initHighlightingOnLoad();
+			</script>
 		{% endif %}
 
 		{% if page.raphael %}
