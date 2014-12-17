@@ -45,7 +45,6 @@ _gaq.push(['_trackPageview']);
 
 		</script>
 
-		{% if page.highlight %}
 			<!-- highlight.js -->
 			<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css" />
 			<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
@@ -55,12 +54,9 @@ _gaq.push(['_trackPageview']);
 				});
 				hljs.initHighlightingOnLoad();
 			</script>
-		{% endif %}
 
-		{% if page.raphael %}
 			<!-- raphael -->
 			<script src="{{ site.url}}/js/raphael-min.js" type="text/javascript"></script>
-		{% endif %}
 
     <!-- Bootstrap -->
     <link href="{{ site.url }}/css/bootstrap.min.css" rel="stylesheet">
@@ -84,6 +80,7 @@ _gaq.push(['_trackPageview']);
 	</div>
 
 	<!-- Static navbar -->
+
 	<div class="navbar navbar-default" role="navigation" style="margin-bottom: 0px; border-radius: 0px;">
 		<div class="container-fluid">
 			<div class="navbar-header">
