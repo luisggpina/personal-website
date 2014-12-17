@@ -500,14 +500,20 @@ standard Java API.
 	The simplest approach, assuming that a method similar to
 	`sun.misc.Unsafe.allocateInstance` makes it to the standard API, is to add an
 	integer argument that sets the identity hash-code to be the least significant
-	bits (the size of a Java hash-code) of that integer argument.
+	bits (the size of a Java hash-code) of that integer argument:
+
+	<pre><code class="java">
+// allocate instance without running constructors
+public Object allocateInstance (Class cls);
+public Object allocateInstance (Class cls, int hashCode);
+	</code></pre>
 
 	Assuming that this method does not make it to the standard API, Rubah could
 	still allocate instances without running any real constructor by injecting dummy
 	constructors to every class that do not do anything interesting. However, Rubah
 	needs to set the identity hash-code of the new object being constructed.
 
-	In this scenario, a key observation is that it is safe to set the identity
+	In this scenario, one key observation is that it is safe to set the identity
 	hash-code of any object being constructed before any reference to that object
 	escapes the constructor.  The invariant that the identity hash-code does not
 	change during the lifetime of the object is kept, except for the constructor
@@ -516,29 +522,51 @@ standard Java API.
 
 	The bytecode sequence that creates an object involves a `NEW` instruction and
 	a `INVOKESPECIAL` instruction to invoke a constructor of the superclass on the
-	newly created object. Between these two bytecodes, the object is instantiated
-	but not constructed. The JVM performs escape analysis to reject any bytecode
+	newly created object.  Between these two bytecodes, the object is instantiated
+	but not constructed.  The JVM performs escape analysis to reject any bytecode
 	that leaks references to this object by writing it to some field or passing it
-	as argument to some method.
+	as an argument to some method.
 
 	This is the right moment to set the identity hash-code of the new object. One
 	option is to add a special API method.  However, this involves passing the
 	instantiated but not constructed object to that method, which makes the bytecode
 	verifier to reject such bytecode.  This option thus require modifications to the
-	bytecode verifier.
+	bytecode verifier:
+
+	<pre><code>
+NEW java.lang.Object
+DUP
+ICONST 42
+INVOKESTATIC java.lang.System.setIdentityHashCode
+INVOKESPECIAL java.lang.Object()
+	</code></pre>
 
 	Another option is to add an extra constructor to `java.lang.Object` that takes
 	an integer and sets the identity hash-code to that value. The bytecode verifier
 	remains unchanged, but we are now exposing a new constructor that should almost
 	never be used. This problem could be mitigated by making this method invisible
-	to the compiler and only accessible through reflection.
+	to the compiler and only accessible through reflection:
+
+	<pre><code class="java">
+Object.class
+	.getConstructor(new Class[]{ Integer.class })
+	.invoke(new Object[]{ new Integer(42) });
+	</code></pre>
 
 	Yet another option is to have the developer add a constructor that takes an
 	integer as the first argument and has a special annotation to note that such
 	argument is actually the identity hash-code of the object being constructed. Or,
 	instead of an integer, that argument has a special type (e.g.
 	`java.lang.IdentityHashCode`), so that it does not collide with any existing
-	constructor that already takes an integer.
+	constructor that already takes an integer:
+
+	<pre><code class="java">
+public class A {
+	@IdentityHashCodeConstructor
+	public A(java.lang.IdentityHashCode hash) {
+	}
+}
+	</code></pre>
 
 * **Changing the class of an object**
 
@@ -563,18 +591,33 @@ standard Java API.
 	`_klass` field in the object header. Proxying an object, or turning an existing
 	proxy into real objects, can be as simple as a writing over the `_klass` field.
 
+	<pre><code class="java">
+void changeClass(E object, Class<? extends E> newClass)
+	throws IllegalArgumentException;
+	</code></pre>
+
 	To change the class of an object safely to another class that defines a
 	different set of fields in this way, by changing the `_klass` field, we have to
 	place restrictions on how different the set of fields can be. The idea is that
 	the representation of the object in memory should, at least, have the same size.
 	So, we can require the new class to define the same number of fields of the same
-	broad type (reference or same primitive type). TODO: change this broad type by a
-	more approriate term.
+	broad type (reference or same primitive type).
 
-	If this pre-condition is met, we can take a CLOS-like approach to map the
-	fields: Pass, as an argument to the method that changes the class, a method
-	handle that takes an array of java.lang.Object, in which each position is a
-	field that the object has, and returns an array of java.lang.Object, in which
-	each position is compatible with the respective field on the new type. TODO: add
-	links to the CLOS meta-object protocol that does this, the common LISP should be
-	available on-line.
+	If this pre-condition is met, we can take a [CLOS-like
+	approach](https://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node300.html) to map
+	the fields: Pass, as an argument to the method that changes the class, an
+	object that implements method `mapFields` which takes two maps from fields to
+	their values and initalizes the new map given the values on the old map:
+
+	<pre><code class="java">
+interface Mapper {
+	void mapFields(
+		Map<Field, Object> oldMap, 
+		Map<Field, Object> newMap);
+}
+void changeClass(E object, Class<? extends E> newClass, Mapper mapper)
+	throws IllegalArgumentException;
+	</code></pre>
+
+----------------------------------
+
