@@ -31,4 +31,4 @@ Links
 Publications
 ------------
 
-{% bibliography --style _bibliography/myapa.list.csl --file references.site --query @*[custom_project=rubah] %}
+{% bibliography --style _bibliography/myapa.list.csl --file references.site.bib --query @*[custom_project=rubah] %}
