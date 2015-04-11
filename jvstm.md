@@ -28,4 +28,4 @@ Links
 Publications
 ------------
 
-{% bibliography --style _bibliography/myapa.list.csl --file references.site --query @*[custom_project=jvstm] %}
+{% bibliography --style _bibliography/myapa.list.csl --file references.site.bib --query @*[custom_project=jvstm] %}

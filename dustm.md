@@ -21,4 +21,4 @@ program, and that convert the program's state lazily.
 Publications
 ------------
 
-{% bibliography --style _bibliography/myapa.list.csl --file references.site --query @*[custom_project=dustm] %}
+{% bibliography --style _bibliography/myapa.list.csl --file references.site.bib --query @*[custom_project=dustm] %}
