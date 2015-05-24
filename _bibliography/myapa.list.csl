@@ -190,6 +190,9 @@
         <text variable="title"/>
       </else>
     </choose>
+    <group delimiter=" " prefix=" (" suffix=")">
+      <text variable="notes"/>
+    </group>
   </macro>
   <macro name="publisher">
     <choose>
