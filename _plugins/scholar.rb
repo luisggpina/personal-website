@@ -23,6 +23,7 @@ $authors["Luís Pina"] = "<b>Luís Pina</b>"
 $authors["Michael Hicks"] = '<a href="http://www.cs.umd.edu/~mwh/" target="_blank">Michael Hicks</a>'
 $authors["João Cachopo"] = '<a href="http://joao.cachopo.org/" target="_blank">João Cachopo</a>'
 $authors["Luís Veiga"] = '<a href="http://www.gsd.inesc-id.pt/~lveiga/" target="_blank">Luís Veiga</a>'
+$authors["Cristian Cadar"] = '<a href="http://www.doc.ic.ac.uk/~cristic/" target="_blank">Cristian Cadar</a>'
 
 class MyFilter < BibTeX::Filter
 	def apply(value)
