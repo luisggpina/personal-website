@@ -6,10 +6,39 @@
 
 %%%%%%%%%%%%%%%%% Submitted %%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%% 2016 %%%%%%%%%%%%%%%%%
+
+@INPROCEEDINGS{pina16tedsuto,
+  title = {Tedsuto:  A General Framework for Testing Dynamic Software Updates},
+	author={Lu\'{i}s Pina and Michael Hicks},
+  booktitle={Proceedings of the {IEEE} 9th International Conference on Software Testing, Verification and Validation},
+  series = {ICST},
+  MONTH = 4,
+  year = 2016,
+	custom_author={Lu\'{i}s Pina and Michael Hicks},
+	custom_pdf = pina16tedsuto.pdf,
+  abstract = { Dynamic software updating (DSU) is a technique for patching running programs,
+        to fix bugs or add new features.  This paper presents Tedsuto, a general
+        testing framework for DSU, along with a concrete implementation of it for
+        Rubah, a state-of-the-art Java-based DSU system. Tedsuto uses system-level
+        tests developed for the old and new versions of the updateable software,
+        and systematically tests whether a dynamic update might result in a test
+        failure. Very often this process is fully automated, while in some cases
+        (e.g., to test new-version functionality) some manual annotations are
+        required.  To evaluate Tedsuto's efficacy, we applied it to dynamic
+        updates previously developed (and tested in an ad hoc manner) for the H2
+        SQL database server and the CrossFTP server--- two real-world,
+        multithreaded systems.  We used three large test suites, totalling 446 tests,
+        and we found a variety of update-related bugs quickly, and at low cost.},
+}
+
+%%%%%%%%%%%%%%%%% 2015 %%%%%%%%%%%%%%%%%
+
 @INPROCEEDINGS{pina15varan,
   title = {Towards Deployment-Time Dynamic Analysis of Server Applications},
 	author={Lu\'{i}s Pina and Cristian Cadar},
-  booktitle = {Proceedings of the 13th International Workshop on Dynamic Analysis (WODA 2015)},
+  booktitle = {Proceedings of the 13th International Workshop on Dynamic Analysis},
+  series = {WODA},
   MONTH = 10,
   year = 2015,
   NOTES = {Extended abstract},
@@ -17,14 +46,13 @@
 	custom_pdf = pina15varan.pdf,
   abstract = {Bug-finding tools based on dynamic analysis (DA), such as Valgrind or the
       compiler sanitizers provided by Clang and GCC, have become ubiquitous
-      during software development.  These analyses are precise but incur a large
-      performance overhead (often several times slower than native execution),
-      which makes them prohibitively expensive to use in production. In this
-      work, we investigate the exciting possibility of deploying such dynamic
-      analyses in production code, using a multi-version execution approach.},
+      during software development. These analyses are precise but incur a
+      large performance overhead (often several times slower than native
+      execution), which makes them prohibitively expensive to use in
+      production. In this work, we investigate the exciting possibility of
+      deploying such dynamic analyses in production code, using a
+      multi-version execution approach.},
 }
-
-%%%%%%%%%%%%%%%%% 2015 %%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%% 2014 %%%%%%%%%%%%%%%%%
 
