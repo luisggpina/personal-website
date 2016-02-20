@@ -27,4 +27,9 @@ page-class: page--post
 			{{ content }}
 		</div>
 
+    {% if page.comments %}
+      {% include disqus-comments.html %}
+    {% endif %}
+
+
 </article>

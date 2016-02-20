@@ -12,6 +12,7 @@ group:      "blog"
 published:  true
 highlight:	true
 raphael:		true
+comments: True
 ---
 
 [Rubah]({{ site.url }}/rubah.html) is a Dynamic Software Updating system for Java that works on the stock

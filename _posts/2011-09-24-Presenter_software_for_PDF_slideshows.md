@@ -9,6 +9,7 @@ layout: post
 title: Presenter software for PDF slideshows
 tags: beamer, latex, open-pdf-presenter, pdf, presentation
 group: "blog"
+comments: True
 ---
 
 Hello!
