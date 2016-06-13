@@ -1,0 +1,321 @@
+pina16tedsuto:
+  title:
+    plain:  "Tedsuto: A General Framework for Testing Dynamic Software Updates"
+  projects:
+    - "rubah"
+  authors:
+    - me
+    - mwh
+  publication:
+    type:      conference
+    publisher: "IEEE"
+    nth:       "8th"
+    title:
+      full:    "International Conference on Software Testing, Verification and Validation"
+      short:   "ICST"
+    location:  "Chicago, IL, USA"
+    date:      "April, 2016"
+  downloads:
+    pdf:    pina16tedsuto.pdf
+    slides: pina16slides.pdf
+  abstract: "
+    Dynamic software updating (DSU) is a technique for patching running
+    programs, to fix bugs or add new features.  This paper presents Tedsuto, a
+    general testing framework for DSU, along with a concrete implementation of
+    it for Rubah, a state-of-the-art Java-based DSU system. Tedsuto uses
+    system-level tests developed for the old and new versions of the updateable
+    software, and systematically tests whether a dynamic update might result in
+    a test failure. Very often this process is fully automated, while in some
+    cases (e.g., to test new-version functionality) some manual annotations are
+    required.  To evaluate Tedsuto's efficacy, we applied it to dynamic updates
+    previously developed (and tested in an ad hoc manner) for the H2 SQL
+    database server and the CrossFTP server--- two real-world, multithreaded
+    systems.  We used three large test suites, totalling 446 tests, and we found
+    a variety of update-related bugs quickly, and at low cost.
+    "
+pina16phd:
+  title: 
+    plain:  "Practical Dynamic Software Updating"
+  projects:
+    - "rubah"
+    - "dustm"
+  authors:
+    - me
+  publication:
+    type:  phdthesis
+    date: "February, 2016"
+    school:
+      plain:  "Instituto Superior Técnico, University of Lisbon"
+      bibtex: "Instituto Superior T\\'{\\e}cnico, University of Lisbon"
+    location: "Lisbon, Portugal"
+  downloads:
+    pdf:    pina16phd.pdf
+    slides: pina16phdslides.pdf
+  abstract: "
+    Updating a program is unavoidable to fix bugs, add features, or improve
+    performance. This is, however, a disruptive operation that involves stopping and
+    restarting the running program, with the side-effect of service downtime and
+    data loss. The ability to update a program without stopping it — to perform a
+    Dynamic Software Update — is thus increasingly important in a world where
+    service downtime and data loss map directly to loss of revenue.
+
+    
+    There are, of course, highly-available systems that simply cannot stop and
+    already support dynamic updates. These systems, however, rely on redundant
+    hardware, already present for fault tolerance, to incrementally update some
+    machines while others keep providing the service. These approaches employ
+    complex and domain-specific algorithms that restrict the flexibility of updates.
+    The research community has focused on this problem and produced a vast body of
+    work. However, to date, there is no practical solution for dynamic software
+    updating.
+
+    
+    In this work, I propose the first practical solution for Dynamic Software
+    Updating for languages that run in a managed environment, in particular, Java.
+    The approach I propose supports unrestricted changes between successive program
+    versions and does not limit the updatable program from using any language or
+    runtime feature. Moreover, it does not add any steady-state overhead and
+    requires only a short pause in program execution to perform an update (that is
+    not proportional to the size of the program state).
+
+    
+    I propose updates to be supported explicitly as program features. Therefore, the
+    developer needs to change their application to support updating it. The solution
+    I propose minimizes the required manual changes and automates most of the code
+    that describes each update. Furthermore, given that the developer may
+    inadvertently introduce errors, only visible during the update process, the
+    approach I propose provides a way for the developer to re-use existing system
+    tests, and write new ones, that ensure that the updated program behaves as
+    expected after an update.
+    "
+pina15varan:
+  title:
+    plain:  "Towards Deployment-Time Dynamic Analysis of Server Applications"
+  projects:
+    - "varan"
+  authors:
+    - me
+    - ccadar
+  publication:
+    type: workshop
+    publisher: "ACM"
+    nth:       "13th"
+    title:
+      full:    "International Workshop on Dynamic Analysis"
+      short:   "WODA"
+    location:  "Pittsburgh, PA, USA"
+    date:     "October, 2015"
+    notes: "Extended abstract"
+  downloads:
+    pdf:    pina15varan.pdf
+    slides: pina15slides.pdf
+  abstract: "
+    Bug-finding tools based on dynamic analysis (DA), such as Valgrind or the
+    compiler sanitizers provided by Clang and GCC, have become ubiquitous during
+    software development. These analyses are precise but incur a large performance
+    overhead (often several times slower than native execution), which makes them
+    prohibitively expensive to use in production. In this work, we investigate the
+    exciting possibility of deploying such dynamic analyses in production code,
+    using a multi-version execution approach.
+    "
+pina14oopsla:
+  title:
+    plain:  "Rubah: DSU for Java on a Stock JVM"
+    bibtex: "Rubah: {DSU} for Java on a Stock {JVM}"
+  projects:
+    - "rubah"
+  authors:
+    - me
+    - lveiga
+    - mwh
+  publication:
+    type: conference
+    publisher: "ACM"
+    nth:       "2014"
+    title:
+      full:    "International Conference on Object-Oriented Programming Languages, Systems, and Applications"
+      short:   "OOPSLA"
+    location:  "Portland, OR, USA"
+    date:     "October, 2014"
+  downloads:
+    pdf:    pina14oopsla.pdf
+    slides: pina14oopslaslides.pdf
+  abstract: "
+    This paper presents Rubah, the first dynamic software updating system for Java
+    that: is portable, implemented via libraries and bytecode rewriting on top of a
+    standard JVM; is efficient, imposing essentially no overhead on normal,
+    steady-state execution; is flexible, allowing nearly arbitrary changes to
+    classes between updates; and is non-disruptive employing either a novel eager
+    algorithm that transforms the program state with multiple threads, or a novel
+    lazy algorithm that transforms objects as they are demanded, post-update.
+    Requiring little programmer effort, Rubah has been used to dynamically update
+    five long-running applications: the H2 database, the Voldemort key-value store,
+    the Jake2 implementation of the Quake 2 shooter game, the CrossFTP server, and
+    the JavaEmailServer.
+    "
+pina13hotswup:
+  title:
+    plain:  "Rubah: Efficient, General-purpose Dynamic Software Updating for Java"
+  projects:
+    - "rubah"
+  authors:
+    - me
+    - mwh
+  publication:
+    type: workshop
+    publisher: "USENIX"
+    nth:       "5th"
+    title:
+      full:    "International Workshop on Hot Topics in Software Upgrades"
+      short:   "HotSWUp"
+    location:  "San Jose, CA, USA"
+    date:     "June, 2013"
+  downloads:
+    pdf:    pina13hotswup.pdf
+    slides: pina13hotswupslides.pdf
+  abstract: "
+      This paper presents Rubah, a new dynamic software updating (DSU) system
+      for Java programs that works on stock VMs. Rubah supports a large range of
+      program changes (e.g., changes to the class hierarchy and updates to running
+      methods), does not restrict important programming idioms (e.g., reflection),
+      and, as shown by performance experiments using an updatable version of the H2
+      database management system, imposes low overhead on normal execution.
+      "
+pina12hotswup:
+  title:
+    plain: "Atomic Dynamic Upgrades Using Software Transactional Memory"
+  projects:
+    - "dustm"
+  authors:
+    - me
+    - jcachopo
+  publication:
+    type: workshop
+    publisher: "IEEE"
+    nth:       "4th"
+    title:
+      full:    "International Workshop on Hot Topics in Software Upgrades"
+      short:   "HotSWUp"
+    location:  "Zurich, Switzerland"
+    date:      "June, 2012"
+  downloads:
+    pdf:    pina12hotswup.pdf
+    slides: pina12hotswupslides.pdf
+  abstract: "
+      In this paper, we propose the use of a Software Transactional Memory to
+      implement a Dynamic Software Upgrade system that combines two desirable
+      properties.  First, it provides a simple semantics to the developer, while
+      allowing upgrades to occur atomically, concurrently with the execution of the
+      program.  Second, it converts the program’s data lazily, as data is
+      progressively accessed by the execution of the upgraded program.  We present
+      also experimental results that show that our lazy approach to software upgrades
+      is able to upgrade a system without affecting significantly the maximum response
+      time of the system’s operations, whereas an immediate approach shows values of
+      maximum response time up to three orders of magnitude higher.
+      "
+pina11tmc:
+  title: 
+    plain:  "Profiling and tuning the performance of an STM-based concurrent program"
+    bibtex: "Profiling and tuning the performance of an {STM}-based concurrent program"
+  projects:
+    - "jvstm"
+  authors:
+    - me
+    - jcachopo
+  publication:
+    type: workshop
+    publisher: "ACM"
+    nth:       ""
+    title:
+      full:    "Workshop on Transitioning to Multicore"
+      short:   "TMC"
+    location:  "Portland, OR, USA"
+    date:      "October, 2011"
+  downloads:
+    pdf:    pina11tmc.pdf
+    slides: pina11tmcslides.pdf
+  abstract: "
+      Over the last years, multicores have become accessible to the common
+      developer.  Writing concurrent programs that are correct and that display good
+      performance is hard.  Software Transactional Memory (STM) is a step in the
+      direction of solving the first problem, but it does not provide tools for the
+      programmer to understand and optimize his code's performance, thus leaving the
+      second problem as an open issue.
+      
+      In this paper, we present a novel technique that informs the developer about
+      which objects cause JVSTM transactions to conflict.  Then, we describe how we
+      used that technique together with several JVSTM conflict reduction techniques to
+      improve the performance of a transactional application.
+      "
+pina09msc:
+  title:
+    plain: "Atomic Dynamic Software Upgrades Using Software Transactional Memories"
+  projects:
+    - "dustm"
+  authors:
+    - me
+  publication:
+    type: mscthesis
+    date: "November, 2009"
+    school:
+      plain:  "Instituto Superior Técnico, University of Lisbon"
+      bibtex: "Instituto Superior T\\'{\\e}cnico, University of Lisbon"
+    location: "Lisbon, Portugal"
+  downloads:
+    pdf:    pina09msc.pdf
+  abstract: "
+    The upgrade of a running program is often a disruptive operation that
+    involves stopping and restarting the program's execution. Yet, software upgrades
+    are unavoidable. Unfortunately, current solutions for dynamic upgrades are
+    either incomplete or not practical. Systems that have high availability
+    requirements implement upgrades through a combination of application-specific
+    software and redundant hardware. However, such systems lack support to migrate
+    the state of the running program to a state that is compatible with the program
+    that the upgrade introduces. Typically, they migrate the persisted data only and
+    the data migration process may impose a long pause on the application.
+    
+    To ensure the atomicity of the upgrade and data migration operations, but still
+    allow them to execute in parallel with the rest of the system, thereby avoiding
+    the restart of the system or long pauses, I introduce a conceptual model that
+    defines the semantics of the upgrade system, and that may be implemented with
+    any STM and programming language. Furthermore, the upgrade system that I propose
+    and the data migration process can be integrated seamlessly with modern software
+    engineering methodologies. I describe an implementation of the proposed upgrade
+    system for the Java platform that uses JVSTM. I implemented a prototype of the
+    upgrade system that is able to perform a significant number of different types
+    of upgrades to a running Java application without stopping it, providing thus a
+    proof of concept that the implementation of the upgrade system is feasible.
+    "
+pina09dsn:
+  title:
+    plain: "Towards a Pragmatic Atomic Dynamic Software Upgrade System"
+  projects:
+    - "dustm"
+  authors:
+    - me
+  publication:
+    type: workshop
+    publisher: "IEEE"
+    nth:       ""
+    title:
+      full:    "International Conference on Dependable Systems and Networks"
+      short:   "DSN"
+    location:  "Portland, OR, USA"
+    location:  "Estoril, Portugal"
+    date:      "June, 2009"
+    notes:     "Student Forum"
+  downloads:
+    pdf:    pina09dsn.pdf
+    slides: pina09dsnslides.pdf
+  abstract: "
+    The upgrade of a running program is often a disruptive operation that involves
+    stopping and restarting the program's execution, becoming, thus, a serious
+    problem for dependable systems. Yet, software upgrades are unavoidable.
+    Unfortunately, current solutions for dynamic software upgrades are either
+    incomplete or not practical. In this paper, I layout the foundations for a new
+    dynamic software upgrade system that provides atomic upgrades and is designed to
+    integrate seamlessly with the current software development practices. This new
+    upgrade system leverages on a software transactional memory to ensure that all
+    the requests of an upgraded system are processed in a consistent state of the
+    program, either before or after the upgrade.
+    "

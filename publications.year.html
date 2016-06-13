@@ -10,40 +10,27 @@ title: research
 group: "research"
 ---
 <div id='weebly_page_content_container'>
+
 	<h1  style=" text-align: left; ">Publications (sorted by year)</h1>
 
-	<h2>2016</h2>
-
-	{% bibliography --style _bibliography/myapa.list.csl --file references.site.bib --query @*[year=2016] %}
-
-	<h2>2015</h2>
-
-	{% bibliography --style _bibliography/myapa.list.csl --file references.site.bib --query @*[year=2015] %}
-
-	<h2>2014</h2>
-	{% bibliography --style _bibliography/myapa.list.csl --file references.site.bib --query @*[year=2014] %}
-
-	<h2>2013</h2>
-
-	{% bibliography --style _bibliography/myapa.list.csl --file references.site.bib --query @*[year=2013] %}
-
-	<h2>2012</h2>
-
-	{% bibliography --style _bibliography/myapa.list.csl --file references.site.bib --query @*[year=2012] %}
-
-	<h2>2011</h2>
-
-	{% bibliography --style _bibliography/myapa.list.csl --file references.site.bib --query !@techreport[year=2011] %}
-
-	<b>Tech-reports</b>
-	{% bibliography --style _bibliography/myapa.list.csl --file references.site.bib --query @techreport[year=2011] %}
-
-	<h2>2009</h2>
-
-	{% bibliography --style _bibliography/myapa.list.csl --file references.site.bib --query !@masterthesis[year=2009] %}
-
-	<b>Master's Thesis</b>
-	{% bibliography --style _bibliography/myapa.list.csl --file references.site.bib --query @masterthesis[year=2009] %}
-
+	{% assign year = site.time | date: '%Y'	%}
+	{% for yy in (2009..year) reversed %}
+		{% assign number = 0 %}
+		{% assign header = true	%}
+		{% for paper_key_val in site.data.papers %}
+			{% assign paper = paper_key_val[1] %}
+			{% assign key = paper_key_val[0] %}
+			{% assign p = paper.publication %}
+			{% assign paper_year = p.date | date: '%Y' | plus: '0' %}
+			{% if paper_year == yy %}
+				{% if header %}
+					{% assign header = false	%}
+					<h2>{{ yy }}</h2>
+				{% endif %}
+				{% assign number = number | plus: 1 %}
+				{% include paper_bibline.html %}
+			{% endif %}
+		{% endfor %}
+	{% endfor %}
 
 </div>

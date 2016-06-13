@@ -1,0 +1,117 @@
+---
+# Copyright 2014 Luís Pina
+#
+# This file is part of Luís Pina personal website.
+#
+#    Luís Pina personal website is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    Luís Pina personal website is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with Luís Pina personal website.  If not, see <http://www.gnu.org/licenses/>.
+layout: default
+---
+	{% assign paper=site.data.papers[page.paper] %}
+	<h1>{{ paper.title.plain }}</h1>
+	<div style="margin-bottom: 30px">
+	{% if paper.downloads != null %}
+		{% if paper.downloads.pdf != null %}
+		|
+		<a href="{{ site.url }}/pdfs/{{ paper.downloads.pdf }}" target="_blank">PDF</a>
+		{% endif %}
+		{% if paper.downloads.slides != null %}
+		|
+		<a href="{{ site.url }}/pdfs/{{ paper.downloads.slides }}" target="_blank">slides</a>
+		{% endif %}
+		{% if paper.entry.custom_github %}
+		|
+		<a href="https://github.com/{{ paper.entry.custom_github }}" target="_blank">github project</a>
+		{% endif %}
+		|
+	{% endif %}
+	</div>
+	<p>
+		{% for paper_author in paper.authors %}
+			{% assign author = site.data.authors[paper_author] %}
+		  {% if paper_author == 'me' %}
+		  	<b>{{ author.name }}</b>
+		  {% else %}
+		  	<a href="{{ author.url }}" target="_blank">{{ author.name }}</a>
+		  {% endif %}
+			{% unless forloop.last %} and {% endunless%}
+		{% endfor %}
+		<br/>
+		{% assign p = paper.publication %}
+		{% assign m = p.date | date: "%m" %}
+		{% case p.type %}
+			{% when "conference" %}
+			In Proceedings of the {{ p.publisher}} {{ p.nth }} {{ p.title.full }} ({{ p.title.short}})<br/>
+			{% when "workshop" %}
+			In Proceedings of the {{ p.nth }} {{ p.title.full }} ({{ p.title.short}})<br/>
+			{% when "phdthesis" %}
+			PhD Dissertation, {{ p.school.plain}}<br/>
+			{% when "mscthesis" %}
+			MSc Thesis, {{ p.school.plain}}<br/>
+		{% endcase %}
+		{{ p.date | date: "%B, %Y" }}
+	</p>
+	<h3>Abstract</h3>
+  <p style="white-space: pre-wrap;">{{ paper.abstract }}</p>
+	<h3>Bibtex</h3>
+	{% if paper.title.bibtex == null %}
+		{% assign t = paper.title.plain %}
+	{% else %}
+		{% assign t = paper.title.bibtex %}
+	{% endif %}
+	{% case p.type %}
+		{% when "conference" %}
+	<pre>@inproceedings{{ "{" }}{{ paper.key }},
+  title     = {{ "{" }}{{ t }}},
+  booktitle = {Proceedings of the {{ "{" }}{{ p.publisher}}} {{ p.nth }} {{ p.title.full }}},
+  year      = {{ "{" }}{{ p.date | date: "%Y" }}},
+  month     = {{ site.data.latex.months[m] }},
+  series    = {{ "{" }}{{ p.title.short }} '{{ p.date | date: "%y" }}},
+  location  = {{ "{" }}{{ p.location }}},
+  publisher = {{ "{" }}{{ p.publisher }}},
+  {% if p.notes != null %}notes     = {{ "{" }}{{ p.notes }}},{% endif %}
+}
+	</pre>
+		{% when "workshop" %}
+	<pre>@inproceedings{{ "{" }}{{ paper.key }},
+  title     = {{ "{" }}{{ t }}},
+  booktitle = {Proceedings of the {{ p.nth }} {{ p.title.full }}},
+  year      = {{ "{" }}{{ p.date | date: "%Y" }}},
+  month     = {{ site.data.latex.months[m] }},
+  series    = {{ "{" }}{{ p.title.short }}},
+  location  = {{ "{" }}{{ p.location }}},
+  publisher = {{ "{" }}{{ p.publisher }}},
+  {% if p.notes != null %}notes     = {{ "{" }}{{ p.notes }}},{% endif %}
+}
+	</pre>
+		{% when "phdthesis" %}
+	<pre>@phdthesis{{ "{" }}{{ paper.key }},
+  title     = {{ "{" }}{{ t }}},
+  school    = {{ "{" }}{{ p.school.bibtex }}},
+  year      = {{ "{" }}{{ p.date | date: "%Y" }}},
+  month     = {{ site.data.latex.months[m] }},
+  location  = {{ "{" }}{{ p.location }}},
+  {% if p.notes != null %}notes     = {{ "{" }}{{ p.notes }}},{% endif %}
+}
+	</pre>
+		{% when "mscthesis" %}
+	<pre>@mastersthesis{{ "{" }}{{ paper.key }},
+  title     = {{ "{" }}{{ t }}},
+  school    = {{ "{" }}{{ p.school.bibtex }}},
+  year      = {{ "{" }}{{ p.date | date: "%Y" }}},
+  month     = {{ site.data.latex.months[m] }},
+  location  = {{ "{" }}{{ p.location }}},
+  {% if p.notes != null %}notes     = {{ "{" }}{{ p.notes }}},{% endif %}
+}
+	</pre>
+	{% endcase %}

@@ -1,0 +1,19 @@
+me:
+  name: Luís Pina
+  bibtex: "Pina, Lu\\'{\\i}s"
+mwh:
+  name: Michael Hicks
+  url: http://www.cs.umd.edu/~mwh/
+  bibtex: "Hicks, Michael"
+jcachopo:
+  name: João Cachopo
+  url: http://joao.cachopo.org/
+  bibtex: "Cachopo, Jo\\~{\\a}o"
+lveiga:
+  name: Luís Veiga
+  url: http://www.gsd.inesc-id.pt/~lveiga/
+  bibtex: "Veiga, Lu\\'{\\i}s"
+ccadar:
+  name: Cristian Cadar
+  url: http://www.doc.ic.ac.uk/~cristic/
+  bibtex: "Cadar, Cristian"

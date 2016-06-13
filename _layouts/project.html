@@ -17,31 +17,29 @@
 #    along with Luís Pina personal website.  If not, see <http://www.gnu.org/licenses/>.
 layout: default
 ---
-	<h1>{{ page.entry.title }}</h1>
-	<p>
-		{{ page.entry.custom_author }}<br/>
-		In {{ page.entry.booktitle }}<br/>
-		{{ page.entry.year }}
-	</p>
-	<h3>Abstract</h3>
-  <p>{{ page.entry.abstract }}</p>
-	{% if page.entry.custom_pdf || page.entry.custom_slides %}
-	<h3>Downloads</h3>
-	<div style="margin-bottom: 30px">
-		{% if page.entry.custom_pdf %}
-		|
-		<a href="{{ site.url }}/pdfs/{{ page.entry.custom_pdf }}" target="_blank">PDF</a>
+
+{% assign project = site.data.projects[page.project] %}
+
+<h1> {{ project.title }} </h1>
+
+{{ content }}
+
+{% if project.links.size > 0 %}
+	<h2> Links </h2>
+	<ul>
+		{% for link in project.links %}
+			<li> <a href={{ link.url }}>{{ link.name }}</a> </li>
+		{% endfor %}
+	</ul>
+{% endif %}
+
+<h2> Papers </h2>
+	{% for paper_key_val in site.data.papers %}
+		{% assign paper = paper_key_val[1] %}
+		{% assign key   = paper_key_val[0] %}
+		{% if paper.projects contains page.project %}
+			{% assign p = paper.publication %}
+			{% assign number = number | plus: 1 %}
+			{% include paper_bibline.html %}
 		{% endif %}
-		{% if page.entry.custom_slides %}
-		|
-		<a href="{{ site.url }}/pdfs/{{ page.entry.custom_slides }}" target="_blank">slides</a>
-		{% endif %}
-		{% if page.entry.custom_github %}
-		|
-		<a href="https://github.com/{{ page.entry.custom_github }}" target="_blank">github project</a>
-		{% endif %}
-		|
-	</div>
-	{% endif %}
-	<h3>Bibtex</h3>
-	<pre>{{ page.entry.bibtex }}</pre>
+  {% endfor %}

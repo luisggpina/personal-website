@@ -1,0 +1,32 @@
+varan:
+  title: "Varan - Multi-version execution"
+  active: yes
+  links:
+    - name: "SRG homepage for Varan"
+      url:  "https://srg.doc.ic.ac.uk/projects/varan/"
+    - name: "Multi-Version Execution Defeats a Compiler-Bug-Based Backdoor"
+      url:  "http://blog.regehr.org/archives/1282"
+rubah:
+  title: "Rubah - Dynamic Software Updating for Java"
+  active: yes
+  links:
+    - name: "Rubah @ github"
+      url:  "https://github.com/plum-umd/rubah"
+    - name: "Rubah talk (OOPSLA 2014)"
+      url:  "https://www.infoq.com/presentations/rubah"
+symdroid:
+  title: "SymDroid - Symbolic Evaluation for Android Applications"
+  active: no
+  links: []
+dustm:
+  title: "DuSTM - Dynamic Updates using Software Transactional Memory"
+  active: no
+  links: []
+jvstm:
+  title: "JVSTM - Java Versioned Software Transactional Memory"
+  active: no
+  links:
+    - name: "JVSTM @ github"
+      url:  "https://github.com/inesc-id-esw/jvstm"
+    - name: "JVSTM homepage"
+      url:  "https://inesc-id-esw.github.io/jvstm/"

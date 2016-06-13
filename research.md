@@ -10,26 +10,33 @@ title: research
 group: "research"
 ---
 
-Publications
-------------
+<h1>Publications</h1>
 
-My full publication list is [available here](publications.year.html).
+My full publication list is <a href="publications.year.html">available here.</a>
 
-Projects
---------
+<h1>Projects</h1>
 
-* [Rubah - Dynamic Software Updating in Java](rubah.html)
-* SymDroid - Symbolic Evaluation for Android Applications
+<ul>
+{% for project in site.data.projects %}
+	{% if project[1].active %}
+  <li> <a href="projects/{{ project[0] }}.html">{{ project[1].title }}</a> </li>
+	{% endif %}
+{% endfor %}
+</ul>
 
-#### Past
+<h4>Past</h4>
 
-* [DuST'M - Dynamic Updates using Software Transactional Memory](dustm.html)
-* [JVSTM - Java Versioned Software Transactional Memory](jvstm.html)
+<ul>
+{% for project in site.data.projects %}
+	{% if !project[1].active %}
+  <li> <a href="projects/{{ project[0] }}.html">{{ project[1].title }}</a> </li>
+	{% endif %}
+{% endfor %}
+</ul>
 
-Research Interests
-------------------
+<h1>Research Interests</h1>
 
-* [Dynamic Software Updating](dsu.html)
+* Dynamic Software Updating
 * Concurrent Programming
     * Multiprocessor Programming
     * Lock-free/Wait-free Algorithms and Data Structures
