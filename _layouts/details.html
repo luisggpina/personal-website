@@ -23,11 +23,11 @@ layout: default
 	{% if paper.downloads != null %}
 		{% if paper.downloads.pdf != null %}
 		|
-		<a href="{{ site.url }}/pdfs/{{ paper.downloads.pdf }}" target="_blank">PDF</a>
+		<a href="{{ site.baseurl }}/pdfs/{{ paper.downloads.pdf }}" target="_blank">PDF</a>
 		{% endif %}
 		{% if paper.downloads.slides != null %}
 		|
-		<a href="{{ site.url }}/pdfs/{{ paper.downloads.slides }}" target="_blank">slides</a>
+		<a href="{{ site.baseurl }}/pdfs/{{ paper.downloads.slides }}" target="_blank">slides</a>
 		{% endif %}
 		{% if paper.entry.custom_github %}
 		|

@@ -15,9 +15,8 @@
 #    You should have received a copy of the GNU General Public License
 #    along with Luís Pina personal website.  If not, see <http://www.gnu.org/licenses/>.
 
-safe:         false
-# url:          http://www.luispina.me
-# baseurl:      http://www.luispina.me
+safe:         true
+baseurl:      /personal-website
 
 source:       .
 destination:  ./__site

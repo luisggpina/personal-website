@@ -1,5 +1,5 @@
 <p>
-[<a href="/details/{{ key }}.html">{{ number }}</a>]
+[<a href="{{ site.baseurl }}/details/{{ key }}.html">{{ number }}</a>]
 <b>{{ paper.title.plain }}</b>.
 {% for paper_author in paper.authors %}
 	{% assign author = site.data.authors[paper_author] %}
