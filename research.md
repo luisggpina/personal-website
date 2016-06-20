@@ -28,7 +28,7 @@ My full publication list is <a href="publications.year.html">available here.</a>
 
 <ul>
 {% for project in site.data.projects %}
-	{% if !project[1].active %}
+	{% if project[1].active == false %}
   <li> <a href="projects/{{ project[0] }}.html">{{ project[1].title }}</a> </li>
 	{% endif %}
 {% endfor %}
