@@ -5,13 +5,13 @@ group: "blog"
 ---
 
 <div class="container" style="text-align: center;">
-	<a href="{{ site.url }}/archive.html">Archive</a>
+	<a href="{{ site.baseurl }}/archive.html">Archive</a>
 	|
-	<a href="{{ site.url }}/blog.rss.xml">RSS</a>
+	<a href="{{ site.baseurl }}/blog.rss.xml">RSS</a>
 </div>
 
 {% for post in site.posts limit:3 %}
-<h1 class="post-title"><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></h1>
+<h1 class="post-title"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
 <div class="post-date">{{ post.date | date: '%d/%b/%Y' }}</div>
 
 <div class="post-content" style="margin-top: 30px;">
