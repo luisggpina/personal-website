@@ -37,14 +37,19 @@ layout: default
 	{% endif %}
 	</div>
 	<p>
+	  {% assign authors_bibtex = "" %}
 		{% for paper_author in paper.authors %}
 			{% assign author = site.data.authors[paper_author] %}
+			{% assign authors_bibtex = authors_bibtex | append: author.bibtex	%}
 		  {% if paper_author == 'me' %}
 		  	<b>{{ author.name }}</b>
 		  {% else %}
 		  	<a href="{{ author.url }}" target="_blank">{{ author.name }}</a>
 		  {% endif %}
 			{% unless forloop.last %} and {% endunless%}
+			{% unless forloop.last %}
+				{% assign authors_bibtex = authors_bibtex | append: " and "	%}
+			{% endunless%}
 		{% endfor %}
 		<br/>
 		{% assign p = paper.publication %}
@@ -73,6 +78,7 @@ layout: default
 		{% when "conference" %}
 	<pre>@inproceedings{{ "{" }}{{ paper.key }},
   title     = {{ "{" }}{{ t }}},
+  author    = {{ "{" }}{{ authors_bibtex }}},
   booktitle = {Proceedings of the {{ "{" }}{{ p.publisher}}} {{ p.nth }} {{ p.title.full }}},
   year      = {{ "{" }}{{ p.date | date: "%Y" }}},
   month     = {{ site.data.latex.months[m] }},
@@ -85,6 +91,7 @@ layout: default
 		{% when "workshop" %}
 	<pre>@inproceedings{{ "{" }}{{ paper.key }},
   title     = {{ "{" }}{{ t }}},
+  author    = {{ "{" }}{{ authors_bibtex }}},
   booktitle = {Proceedings of the {{ p.nth }} {{ p.title.full }}},
   year      = {{ "{" }}{{ p.date | date: "%Y" }}},
   month     = {{ site.data.latex.months[m] }},
@@ -97,6 +104,7 @@ layout: default
 		{% when "phdthesis" %}
 	<pre>@phdthesis{{ "{" }}{{ paper.key }},
   title     = {{ "{" }}{{ t }}},
+  author    = {{ "{" }}{{ authors_bibtex }}},
   school    = {{ "{" }}{{ p.school.bibtex }}},
   year      = {{ "{" }}{{ p.date | date: "%Y" }}},
   month     = {{ site.data.latex.months[m] }},
@@ -107,6 +115,7 @@ layout: default
 		{% when "mscthesis" %}
 	<pre>@mastersthesis{{ "{" }}{{ paper.key }},
   title     = {{ "{" }}{{ t }}},
+  author    = {{ "{" }}{{ authors_bibtex }}},
   school    = {{ "{" }}{{ p.school.bibtex }}},
   year      = {{ "{" }}{{ p.date | date: "%Y" }}},
   month     = {{ site.data.latex.months[m] }},
