@@ -9,18 +9,23 @@ layout: index
 title: index
 group: "index"
 ---
-I am a final year [PhD candidate on Information Systems and Computer
-Engineering](https://fenix.tecnico.ulisboa.pt/cursos/deic?locale=en_EN)	at
-Instituto Superior Técnico, Lisbon.
+Luís is currently a post-doc at the [Software Reliability Group
+(SRG)](https://srg.doc.ic.ac.uk/) at Imperial College London. He was part of the
+[Programming Languages Group (PLUM)](https://www.cs.umd.edu/projects/PL/) at
+University of Maryland from 2012 to 2015, and part of the [Software Engineering
+Group (ESW)](http://www.inesc-id.pt/group.php?grp=II03) at INESC-ID in Lisbon
+from 2009 to 2012.
 
-I developed my thesis work on [Dynamic Software
-Updating (DSU)](dsu.html) under the supervision of Prof. [Michael
-Hicks](http://www.cs.umd.edu/~mwh/) and Prof. [Luís
-Veiga](http://www.gsd.inesc-id.pt/~lveiga/).
+He holds a [PhD on Information Systems and Computer
+Engineering](https://fenix.tecnico.ulisboa.pt/cursos/deic?locale=en_EN) from
+[Instituto Superior Técnico, University of Lisbon,
+Portugal](http://tecnico.ulisboa.pt/en).  He developed
+[his dissertation]({{ site.baseurl}}/details/pina16phd.html)
+under the supervision of [Prof. Luís Veiga]({{ site.data.authors['lveiga'].url }})
+and [Prof. Michael Hicks]({{ site.data.authors['mwh'].url }}),
+focusing on [making Dynamic Software Updates (DSU) practical]({{ site.baseurl/projects/rubah.html }}).
 
-Currently, I have a post-doctoral position at the [SRG
-Group](http://srg.doc.ic.ac.uk/) at Imperial College London.  I was part of the
-[PLUM group](http://www.cs.umd.edu/projects/PL/) at University of Maryland from
-2012 to 2015, and part of the [ESW
-group](http://www.esw.inesc-id.pt/cgi-bin/moin.cgi) at INESC-ID in Lisbon from
-2009 to 2012.
+Luís is now working on [Multi-Version Execution]({{ site.baseurl }}/projects/varan.html),
+with [Prof. Cristian Cadar](http://www.doc.ic.ac.uk/~cristic/),
+exploring how to use this technique
+to [deploy expensive dynamic analysis techniques in production environments]({{ site.baseurl }}/details/pina15varan.html).
