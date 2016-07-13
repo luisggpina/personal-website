@@ -28,4 +28,4 @@ focusing on [making Dynamic Software Updates (DSU) practical]({{ site.baseurl/pr
 Luís is now working on [Multi-Version Execution]({{ site.baseurl }}/projects/varan.html),
 with [Prof. Cristian Cadar](http://www.doc.ic.ac.uk/~cristic/),
 exploring how to use this technique
-to [deploy expensive dynamic analysis techniques in production environments]({{ site.baseurl }}/details/pina15varan.html).
+to [deploy costly dynamic analysis techniques in production environments]({{ site.baseurl }}/details/pina15varan.html).
