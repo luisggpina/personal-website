@@ -16,7 +16,7 @@
 #    along with Luís Pina personal website.  If not, see <http://www.gnu.org/licenses/>.
 
 safe:         true
-baseurl:      /personal-website
+baseurl:      ""
 
 source:       .
 destination:  ./__site
