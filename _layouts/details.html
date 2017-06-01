@@ -56,7 +56,7 @@ layout: default
 		{% assign m = p.date | date: "%m" %}
 		{% case p.type %}
 			{% when "conference" %}
-			In Proceedings of the {{ p.publisher}} {{ p.nth }} {{ p.title.full }} ({{ p.title.short}})<br/>
+			In Proceedings of the  {{ p.prenth }} {{ p.publisher}} {{ p.nth }} {{ p.title.full }} ({{ p.title.short}})<br/>
 			{% when "workshop" %}
 			In Proceedings of the {{ p.nth }} {{ p.title.full }} ({{ p.title.short}})<br/>
 			{% when "phdthesis" %}

@@ -17,3 +17,11 @@ ccadar:
   name: Cristian Cadar
   url: http://www.doc.ic.ac.uk/~cristic/
   bibtex: "Cadar, Cristian"
+aandronidis:
+  name: Anastasios Andronidis
+  url: https://srg.doc.ic.ac.uk/people/anastasios-andronidis/
+  bibtex: "Andronidis, Anastasios"
+dgrumberg:
+  name: Daniel Grumberg
+  url: https://srg.doc.ic.ac.uk/people/daniel-grumberg/
+  bibtex: "Grumberg, Daniel"
