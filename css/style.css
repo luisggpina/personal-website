@@ -51,6 +51,25 @@ div.gradient {
     }
 }
 
+img.mainphoto {
+    width: 400px;
+}
+
+div.maintext {
+    width: 500px;
+}
+
+
+@media (max-width:1000px) {
+    img.mainphoto {
+        width: 75%;
+    }
+
+    div.maintext {
+        width: 90%;
+    }
+}
+
 div.comments {
     padding-top: 10px;
 }
