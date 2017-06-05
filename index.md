@@ -29,9 +29,3 @@ Luís is now working on [Multi-Version Execution]({{ site.baseurl }}/projects/va
 with [Prof. Cristian Cadar](http://www.doc.ic.ac.uk/~cristic/),
 exploring how to use this technique
 to [deploy costly dynamic analysis techniques in production environments]({{ site.baseurl }}/details/pina15varan.html).
-
----
-
-Luís will deliver the tutorials for [Software Reliability
-(440)](https://www.doc.ic.ac.uk/~afd/teaching/SoftwareReliability/) during the
-fall semester of 2016/2017 at Imperial College London.
