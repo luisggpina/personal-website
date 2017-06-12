@@ -2,7 +2,7 @@ pina17varandsl:
   title:
     plain:  "A DSL Approach to Reconcile Equivalent Divergent Program Executions"
   projects:
-    - "rubah"
+    - "varan"
   authors:
     - me
     - dgrumberg
