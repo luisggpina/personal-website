@@ -19,6 +19,7 @@ pina17varandsl:
     date:      "July, 2017"
   downloads:
     pdf:    pina17varandsl.pdf
+    slides: pina17varandslslides.pdf
   abstract: "
     Multi-Version Execution (MVE) deploys multiple versions of the same
     program, typically synchronizing their execution at the level of system
