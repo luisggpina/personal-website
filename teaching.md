@@ -16,5 +16,5 @@ Current teaching
 Past teaching
 ----------------
 
-* [Software Reliability (440)](https://www.doc.ic.ac.uk/~afd/teaching/SoftwareReliability/)
+* [Software Reliability (440)](http://multicore.doc.ic.ac.uk/SoftwareReliability/2016-2017/)
     * Fall semester of 2016/2017 at Imperial College London
