@@ -20,7 +20,7 @@ baseurl:      ""
 
 source:       .
 destination:  ./__site
-plugins:      ./_plugins
+plugins_dir:  ./_plugins
 exclude:      [ LICENSE.gplv2, README.md, app.yaml ]
 
 markdown:     kramdown
