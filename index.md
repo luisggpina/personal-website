@@ -9,12 +9,14 @@ layout: index
 title: index
 group: "index"
 ---
-Luís is currently a post-doc at the [Software Reliability Group
-(SRG)](https://srg.doc.ic.ac.uk/) at Imperial College London. He was part of the
-[Programming Languages Group (PLUM)](https://www.cs.umd.edu/projects/PL/) at
-University of Maryland from 2012 to 2015, and part of the [Software Engineering
-Group (ESW)](http://www.inesc-id.pt/group.php?grp=II03) at INESC-ID in Lisbon
-from 2009 to 2012.
+Luís is currently a post-doc at [George Mason University's Department of
+Computer Science](https://cs.gmu.edu). He was part of the [Software Reliability
+Group (SRG)](https://srg.doc.ic.ac.uk/) at Imperial College London, from 2015 to
+2017, part of the [Programming Languages Group
+(PLUM)](https://www.cs.umd.edu/projects/PL/) at University of Maryland from 2012
+to 2015, and part of the [Software Engineering Group
+(ESW)](http://www.inesc-id.pt/group.php?grp=II03) at INESC-ID in Lisbon from
+2009 to 2012.
 
 He holds a [PhD on Information Systems and Computer
 Engineering](https://fenix.tecnico.ulisboa.pt/cursos/deic?locale=en_EN) from
@@ -24,8 +26,3 @@ Portugal](http://tecnico.ulisboa.pt/en).  He developed
 under the supervision of [Prof. Luís Veiga]({{ site.data.authors['lveiga'].url }})
 and [Prof. Michael Hicks]({{ site.data.authors['mwh'].url }}),
 focusing on [making Dynamic Software Updates (DSU) practical]({{ site.baseurl/projects/rubah.html }}).
-
-Luís is now working on [Multi-Version Execution]({{ site.baseurl }}/projects/varan.html),
-with [Prof. Cristian Cadar](http://www.doc.ic.ac.uk/~cristic/),
-exploring how to use this technique
-to [deploy costly dynamic analysis techniques in production environments]({{ site.baseurl }}/details/pina15varan.html).
