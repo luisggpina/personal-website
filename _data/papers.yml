@@ -1,3 +1,45 @@
+pina18freeda:
+  title:
+    plain:  "FreeDA: Deploying Incompatible Stock Dynamic Analyses in Production via Multi-Version Execution"
+  projects:
+    - "varan"
+  authors:
+    - me
+    - aandronidis
+    - ccadar
+  publication:
+    type:      conference
+    publisher: "ACM"
+    prenth:   "2018"
+    title:
+      full:    "International Conference on Computing Frontiers"
+      short:   "CF"
+    location:  "Ischia, Italy"
+    date:      "May, 2018"
+  downloads:
+    pdf:    pina18freeda.pdf
+  abstract: "
+    Dynamic analyses such as those implemented by compiler sanitizers and
+    Valgrind are effective at finding and diagnosing challenging bugs and
+    security vulnerabilities.  However, most analyses cannot be combined
+    on the same program execution, and they incur a high overhead, which
+    typically prevents them from being used in production.
+
+    This paper addresses the ambitious goal of running concurrently
+    multiple incompatible stock dynamic analysis tools in production,
+    without requiring any modifications to the tools themselves or adding
+    significant runtime overhead to the deployed system.  This is
+    accomplished using multi-version execution, in which the dynamic
+    analyses are run concurrently with the native version, all on the same
+    program execution.
+
+    We implement our approach in a system called FreeDA and show that it
+    is applicable to several common scenarios, involving network servers
+    and interactive applications.  In particular, we show how incompatible
+    stock dynamic analyses implemented by Clang's sanitizers and Valgrind
+    can be used to check high-performance servers such as Memcached, Nginx
+    and Redis, and interactive applications such as Git, HTop and OpenSSH.
+    "
 pina17varandsl:
   title:
     plain:  "A DSL Approach to Reconcile Equivalent Divergent Program Executions"
