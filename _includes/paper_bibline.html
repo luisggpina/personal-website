@@ -12,7 +12,11 @@
 {% endfor %}
 {% case p.type %}
 	{% when "conference" %}
-	In <i>Proceedings of the {{ p.prenth }} {{ p.publisher}} {{ p.nth }} {{ p.title.full }} ({{ p.title.short}})</i>,
+		{% if p.nopub %}
+            In <i>Proceedings of the {{ p.prenth }} {{ p.nth }} {{ p.title.full }} ({{ p.title.short}})</i>,
+		{% else %}
+            In <i>Proceedings of the {{ p.prenth }} {{ p.publisher}} {{ p.nth }} {{ p.title.full }} ({{ p.title.short}})</i>,
+		{% endif %}
 	{% when "workshop" %}
 	In <i>Proceedings of the {{ p.nth }} {{ p.title.full }} ({{ p.title.short}})</i>,
 	{% when "phdthesis" %}

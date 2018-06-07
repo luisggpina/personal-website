@@ -56,7 +56,11 @@ layout: default
 		{% assign m = p.date | date: "%m" %}
 		{% case p.type %}
 			{% when "conference" %}
-			In Proceedings of the  {{ p.prenth }} {{ p.publisher}} {{ p.nth }} {{ p.title.full }} {{ p.postnth}} ({{ p.title.short}})<br/>
+                {% if p.nopub %}
+                    In Proceedings of the  {{ p.prenth }} {{ p.nth }} {{ p.title.full }} {{ p.postnth}} ({{ p.title.short}})<br/>
+                {% else %}
+                    In Proceedings of the  {{ p.prenth }} {{ p.publisher}} {{ p.nth }} {{ p.title.full }} {{ p.postnth}} ({{ p.title.short}})<br/>
+                {% endif %}
 			{% when "workshop" %}
 			In Proceedings of the {{ p.nth }} {{ p.title.full }} ({{ p.title.short}})<br/>
 			{% when "phdthesis" %}
@@ -79,8 +83,9 @@ layout: default
 	<pre>@inproceedings{{ "{" }}{{ paper.key }},
   title     = {{ "{" }}{{ t }}},
   author    = {{ "{" }}{{ authors_bibtex }}},
-  booktitle = {Proceedings of the {{ "{" }}{{ p.publisher}}} {{ p.nth }} {{ p.title.full }}},
-  year      = {{ "{" }}{{ p.date | date: "%Y" }}},
+{% if p.nopub %}  booktitle = {Proceedings of the {{ p.nth }} {{ p.title.full }}},
+{% else %}  booktitle = {Proceedings of the {{ "{" }}{{ p.publisher}}} {{ p.nth }} {{ p.title.full }}},
+{% endif %}  year      = {{ "{" }}{{ p.date | date: "%Y" }}},
   month     = {{ site.data.latex.months[m] }},
   series    = {{ "{" }}{{ p.title.short }} '{{ p.date | date: "%y" }}},
   location  = {{ "{" }}{{ p.location }}},

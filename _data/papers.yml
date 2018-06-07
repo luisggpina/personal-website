@@ -1,3 +1,56 @@
+bellpina18crochet:
+  title:
+    plain:  "CROCHET: Checkpoint and Rollback via Lightweight Heap Traversal on Stock JVMs"
+  projects:
+  authors:
+    - jbell
+    - me
+  publication:
+    type:      conference
+    publisher: "Schloss Dagstuhl--Leibniz-Zentrum fuer Informatik"
+    nth:    "32nd"
+    nopub:     True
+    title:
+      full:    "European Conference on Object-Oriented Programming"
+      short:   "ECOOP"
+    location:  "Amsterdam, Netherlands"
+    date:      "July, 2018"
+  downloads:
+    pdf:    bellpina18crochet.pdf
+  abstract: "
+    Checkpoint/rollback (CR) mechanisms create snapshots of the state of a
+    running application, allowing it to later be restored to that checkpointed
+    snapshot. Support for checkpoint/rollback enables many program analyses and
+    software engineering techniques, including test generation, fault tolerance,
+    and speculative execution.
+
+    Fully automatic CR support is built into some modern operating systems.
+    However, such systems perform checkpoints at the coarse granularity of whole
+    pages of virtual memory, which imposes relatively high overhead to
+    incrementally capture the changing state of a process, and makes it
+    difficult for applications to checkpoint only some logical portions of their
+    state. CR systems implemented at the application level and with a finer
+    granularity typically require complex developer support to identify: (1)
+    where checkpoints can take place, and (2) which program state needs to be
+    copied. A popular compromise is to implement CR support in managed runtime
+    environments, e.g., the Java Virtual Machine (JVM), but this typically
+    requires specialized, non-standard runtime environments, limiting
+    portability and adoption of this approach.
+
+    In this paper, we present a novel approach for Checkpoint ROllbaCk via
+    lightweight HEap Traversal (Crochet), which enables fully automatic
+    fine-grained lightweight checkpoints within unmodified commodity JVMs
+    (specifically Oracle’s HotSpot and OpenJDK). Leveraging key insights about
+    the internal design common to modern JVMs, Crochet works entirely through
+    bytecode rewriting and standard debug APIs, utilizing special proxy objects
+    to perform a lazy heap traversal that starts at the root references and
+    traverses the heap as objects are accessed, copying or restoring state as
+    needed and removing each proxy immediately after it is used. We evaluated
+    Crochet on the DaCapo benchmark suite, finding it to have very low runtime
+    overhead in steady state (ranging from no overhead to 1.29x slowdown), and
+    that it often outperforms a state-of-the-art system-level checkpoint tool
+    when creating large checkpoints.
+    "
 pina18freeda:
   title:
     plain:  "FreeDA: Deploying Incompatible Stock Dynamic Analyses in Production via Multi-Version Execution"
