@@ -25,13 +25,17 @@ layout: default
 		|
 		<a href="{{ site.baseurl }}/pdfs/{{ paper.downloads.pdf }}" target="_blank">PDF</a>
 		{% endif %}
+		{% if paper.github %}
+		|
+		<a href="https://github.com/{{ paper.github }}" target="_blank">github</a>
+		{% endif %}
 		{% if paper.downloads.slides != null %}
 		|
 		<a href="{{ site.baseurl }}/pdfs/{{ paper.downloads.slides }}" target="_blank">slides</a>
 		{% endif %}
-		{% if paper.entry.custom_github %}
+		{% if paper.downloads.poster != null %}
 		|
-		<a href="https://github.com/{{ paper.entry.custom_github }}" target="_blank">github project</a>
+		<a href="{{ site.baseurl }}/pdfs/{{ paper.downloads.poster }}" target="_blank">poster</a>
 		{% endif %}
 		|
 	{% endif %}

@@ -15,8 +15,11 @@ bellpina18crochet:
       short:   "ECOOP"
     location:  "Amsterdam, Netherlands"
     date:      "July, 2018"
+  github: gmu-swe/crochet
   downloads:
     pdf:    bellpina18crochet.pdf
+    slides: bellpina18crochetslides.pdf
+    poster: bellpina18crochetposter.pdf
   abstract: "
     Checkpoint/rollback (CR) mechanisms create snapshots of the state of a
     running application, allowing it to later be restored to that checkpointed
