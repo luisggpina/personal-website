@@ -1,3 +1,37 @@
+pina19mvedsua:
+  title:
+    plain:  "MVEDSUa: Higher Availability Dynamic Software Updates via Multi-Version Execution"
+  projects:
+  authors:
+    - me
+    - aandronidis
+    - mwh
+    - ccadar
+  publication:
+    type:      conference
+    publisher: "ACM"
+    nth:    "24th"
+    nopub:     True
+    title:
+      full:    "Architectural Support for Programming Languages and Operating Systems"
+      short:   "ASPLOS"
+    location:  "Providence, RI, USA"
+    date:      "April, 2019"
+  downloads:
+    pdf:    pina19mvedsua.pdf
+  abstract: "Dynamic Software Updating (DSU) is a general-purpose technique for patching stateful software without shutting it down, which enables both timely updates and non-stop service.
+  However, applying an update could induce a long delay in service, and bugs in the update - both in the changed code and in the specification for effecting that change dynamically - may cause the updated software to crash or misbehave.
+
+This paper proposes MVEDSUa, a system that solves these problems by augmenting a DSU system with support for Multi-Version Execution (MVE).
+To start, MVEDSUa performs an update in parallel with the original system, thereby avoiding any service
+delay.
+Then, it monitors that the updated and original systems' responses agree when given the same inputs.
+Expected differences are specified by the programmer, so remaining differences signal likely errors.
+If the new version shows no problems, it can be installed permanently.
+
+We implemented MVEDSUa on top of Kitsune and Varan state-of-the-art DSU and MVE systems respectively, and used it to update several high-performance servers: Redis, Memcached, and VSFTPD.
+Our results show that MVEDSUa significantly reduces the update-time delay, imposes little overhead in steady state, and easily recovers from a variety of update-related errors.
+    "
 bellpina18crochet:
   title:
     plain:  "CROCHET: Checkpoint and Rollback via Lightweight Heap Traversal on Stock JVMs"

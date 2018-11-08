@@ -14,7 +14,7 @@ group: "research"
 	<h1  style=" text-align: left; ">Publications (sorted by year)</h1>
 
 	{% assign year = site.time | date: '%Y'	%}
-	{% for yy in (2009..year) reversed %}
+	{% for yy in (2009..2100) reversed %}
 		{% assign number = 0 %}
 		{% assign header = true	%}
 		{% for paper_key_val in site.data.papers %}
