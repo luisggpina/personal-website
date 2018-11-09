@@ -11,7 +11,6 @@ pina19mvedsua:
     type:      conference
     publisher: "ACM"
     nth:    "24th"
-    nopub:     True
     title:
       full:    "Architectural Support for Programming Languages and Operating Systems"
       short:   "ASPLOS"
