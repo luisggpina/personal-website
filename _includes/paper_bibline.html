@@ -1,6 +1,6 @@
 <p>
-[<a href="{{ site.baseurl }}/details/{{ key }}.html">{{ p.title.short }}_{{ p.date | date: "%y" }}</a>]
-<b>{{ paper.title.plain }}</b>.
+[{{ p.title.short }}_{{ p.date | date: "%y" }}]
+<b><a href="{{ site.baseurl }}/details/{{ key }}.html">{{ paper.title.plain }}</a></b>.
 {% for paper_author in paper.authors %}
 	{% assign author = site.data.authors[paper_author] %}
 		{% if paper_author == "me" %}
