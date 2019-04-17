@@ -37,6 +37,12 @@ layout: default
 		|
 		<a href="{{ site.baseurl }}/pdfs/{{ paper.downloads.poster }}" target="_blank">poster</a>
 		{% endif %}
+		{% if paper.downloads.youtube != null %}
+		|
+		<a href="https://www.youtube.com/watch?v={{ paper.downloads.youtube }}" target="_blank">
+<i class="fa fa-youtube   fa-2x" aria-hidden="true"></i>
+        </a>
+		{% endif %}
 		|
 	{% endif %}
 	</div>

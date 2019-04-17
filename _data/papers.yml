@@ -18,6 +18,9 @@ pina19mvedsua:
     date:      "April, 2019"
   downloads:
     pdf:    pina19mvedsua.pdf
+    slides: pina19mvedsuaslides.pdf
+    poster: pina19mvedsuaposter.pdf
+    youtube: PfmKkltLK4Y
   abstract: "Dynamic Software Updating (DSU) is a general-purpose technique for patching stateful software without shutting it down, which enables both timely updates and non-stop service.
   However, applying an update could induce a long delay in service, and bugs in the update - both in the changed code and in the specification for effecting that change dynamically - may cause the updated software to crash or misbehave.
 
