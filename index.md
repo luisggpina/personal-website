@@ -9,6 +9,9 @@ layout: index
 title: index
 group: "index"
 ---
+
+Luís will join the [CS department at University of Illinois Chicago (UIC)](https://cs.uic.edu/) in the Fall 2019 as an Assistant Professor.
+
 Luís is currently a post-doc at [George Mason University's Department of
 Computer Science](https://cs.gmu.edu). He was part of the [Software Reliability
 Group (SRG)](https://srg.doc.ic.ac.uk/) at Imperial College London, from 2015 to
