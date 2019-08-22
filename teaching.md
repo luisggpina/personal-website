@@ -13,6 +13,8 @@ group: "teaching"
 Current teaching
 ----------------
 
+* [CS474 Fall 2019](https://luisggpina.github.io/cs474-2019-site/).
+
 Past teaching
 ----------------
 

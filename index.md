@@ -10,6 +10,8 @@ title: index
 group: "index"
 ---
 
+For CS474, [click here](https://luisggpina.github.io/cs474-2019-site/).
+
 Luís is currently an Assistant Professor with the [CS department at University of Illinois Chicago (UIC)](https://cs.uic.edu/), since the Fall of 2019.
 
 Previously, Luís was a post-doc at [George Mason University's Department of
