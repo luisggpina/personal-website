@@ -10,15 +10,22 @@ title: research
 group: "teaching"
 ---
 
-Current teaching
-----------------
+# Current teaching
 
-* [CS474 Fall 2020:  Object-Oriented Languages and Environments](https://cs474-uic.github.io/cs474-fall2020-site/).
+**CS473:  Compiler Design**
 
-Past teaching
-----------------
+# Past teaching
 
-* [CS494 Spring 2020:  Principles of Concurrent Programming](https://luisggpina.github.io/cs494-s20-site/).
-* [CS474 Fall 2019:  Object-Oriented Languages and Environments](https://luisggpina.github.io/cs474-2019-site/).
+### CS474 - Object-Oriented Languages and Environments
+* [Fall 2021](https://cs474-uic.github.io/cs474-fall2021-site/)
+* [Fall 2020](https://cs474-uic.github.io/cs474-fall2020-site/)
+* [Fall 2019](https://luisggpina.github.io/cs474-2019-site/)
+
+### CS454 - Principles of Concurrent Programming (CS494 before 2022)
+* [Spring 2022](https://cs474-uic.github.io/cs454-spring2022-site/)
+* [Spring 2021](https://cs474-uic.github.io/cs494-spring2021-site/)
+* [Spring 2020](https://luisggpina.github.io/cs494-s20-site/)
+
+### Other
 * [Software Reliability (440)](http://multicore.doc.ic.ac.uk/SoftwareReliability/2016-2017/)
     * Fall semester of 2016/2017 at Imperial College London
