@@ -5,6 +5,8 @@
 	{% assign author = site.data.authors[paper_author] %}
 		{% if paper_author == "me" %}
 			<span style="text-decoration: underline">{{ author.name }}</span>{% if forloop.last %}. {% endif%}
+		{% elsif author.url == nil %}
+			{{ author.name }}
 		{% else %}
 			<a href="{{ author.url }}" target="_blank">{{ author.name }}</a>{% if forloop.last %}. {% endif%}
 		{% endif %}
