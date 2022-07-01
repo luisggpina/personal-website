@@ -29,3 +29,10 @@ jbell:
   name: Jonathan Bell
   url: http://jonbell.net
   bibtex: "Bell, Jonathan"
+jkukucka:
+  name: James Kukucka
+  bibtex: "Kukucka, James"
+pammann:
+  name: Paul Ammann
+  bibtex: "Ammann, Paul"
+  url: https://cs.gmu.edu/~pammann/
