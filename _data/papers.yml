@@ -21,6 +21,34 @@ kukucka22confetti:
     pdf:    kukucka22confetti.pdf
     youtube: -R9WuOUs8I8
   abstract: "Fuzz testing (fuzzing) allows developers to detect bugs and vulnerabilities in code by automatically generating defect-revealing inputs. Most fuzzers operate by generating inputs for applications and mutating the bytes of those inputs, guiding the fuzzing process with branch coverage feedback via instrumentation. Whitebox guidance (e.g., taint tracking or concolic execution) is sometimes integrated with coverage-guided fuzzing to help cover tricky-to-reach branches that are guarded by complex conditions (so-called “magic values”). This integration typically takes the form of a targeted input mutation, eg placing particular byte values at a specific offset of some input in order to cover a branch. However, these dynamic analysis techniques are not perfect in practice, which can result in the loss of important relationships between input bytes and branch predicates, thus reducing the effective power of the technique. We introduce a new, surprisingly simple, but effective technique, global hinting, which allows the fuzzer to insert these interesting bytes not only at a targeted position, but in any position of any input. We implemented this idea in Java, creating CONFETTI, which uses both targeted and global hints for fuzzing. In an empirical comparison with two baseline approaches, a state-of-the-art greybox Java fuzzer and a version of CONFETTI without global hinting, we found that CONFETTI covers more branches and finds 15 previously unreported bugs, including 9 that neither baseline could find. By conducting a forensic analysis of CONFETTI’s execution, we determined that global hinting was at least as effective at revealing new coverage as traditional, targeted hinting."
+arras22sabre:
+  title:
+    plain:  "SaBRe: load-time selective binary rewriting"
+  projects: varan
+  authors:
+    - parras
+    - aandronidis
+    - me
+    - kmituzas
+    - qshu
+    - dgrumberg
+    - ccadar
+  publication:
+    type:      journal
+    publisher: "Springer-Verlag"
+    title:
+      full:    "International Journal on Software Tools for Technology Transfer"
+      short:   "IJSTTT"
+    date:      "April, 2022"
+    accepted:  "December, 2021"
+    published: "January, 2022"
+    pages:     [205,223]
+    volume: 24
+    nth: 2
+  github: srg-imperial/SaBRe
+  downloads:
+    pdf:    arras22sabre.pdf
+  abstract: "Binary rewriting consists in disassembling a program to modify its instructions. However, existing solutions suffer from shortcomings in terms of soundness and performance. We present SaBRe, a load-time system for selective binary rewriting. SaBRe rewrites specific constructs—particularly system calls and functions—when the program is loaded into memory, and intercepts them using plugins through a simple API. We also discuss the theoretical underpinnings of disassembling and rewriting. We developed two backends—for x86_64 and RISC-V—which were used to implement three plugins: a fast system call tracer, a multi-version executor, and a fault injector. Our evaluation shows that SaBRe imposes little overhead, typically below 3%."
 pina19mvedsua:
   title:
     plain:  "MVEDSUa: Higher Availability Dynamic Software Updates via Multi-Version Execution"

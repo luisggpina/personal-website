@@ -11,6 +11,8 @@
 	{% unless forloop.last %} and {% endunless%}
 {% endfor %}
 {% case p.type %}
+	{% when "journal" %}
+            In <i>{{ p.title.full }} ({{ p.title.short}})</i>,
 	{% when "conference" %}
 		{% if p.nopub %}
             In <i>Proceedings of the {{ p.prenth }} {{ p.nth }} {{ p.title.full }} ({{ p.title.short}})</i>,

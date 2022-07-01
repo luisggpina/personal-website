@@ -53,6 +53,8 @@ layout: default
 			{% assign authors_bibtex = authors_bibtex | append: author.bibtex	%}
 		  {% if paper_author == 'me' %}
 		  	<b>{{ author.name }}</b>
+		  {% elsif author.url == nil %}
+		  	{{ author.name }}
 		  {% else %}
 		  	<a href="{{ author.url }}" target="_blank">{{ author.name }}</a>
 		  {% endif %}
@@ -65,6 +67,8 @@ layout: default
 		{% assign p = paper.publication %}
 		{% assign m = p.date | date: "%m" %}
 		{% case p.type %}
+			{% when "journal" %}
+                    In {{ p.title.full }}<br/>
 			{% when "conference" %}
                 {% if p.nopub %}
                     In Proceedings of the  {{ p.prenth }} {{ p.nth }} {{ p.title.full }} {{ p.postnth}} ({{ p.title.short}})<br/>
@@ -89,6 +93,20 @@ layout: default
 		{% assign t = paper.title.bibtex %}
 	{% endif %}
 	{% case p.type %}
+		{% when "journal" %}
+	<pre>@article{{ "{" }}{{ page.paper }},
+  title     = {{ "{" }}{{ t }}},
+  author    = {{ "{" }}{{ authors_bibtex }}},
+  journal   = {{ "{" }}{{ p.title.full }}},
+  year      = {{ "{" }}{{ p.date | date: "%Y" }}},
+  month     = {{ site.data.latex.months[m] }},
+  volume    = {{ "{" }}{{ p.volume }}},
+  number    = {{ "{" }}{{ p.nth }}},
+  pages     = {{ "{" }}{{ p.pages[0] }}-{{ p.pages[1] }}},
+  publisher = {{ "{" }}{{ p.publisher }}},
+  {% if p.notes != null %}notes     = {{ "{" }}{{ p.notes }}},{% endif %}
+}
+	</pre>
 		{% when "conference" %}
 	<pre>@inproceedings{{ "{" }}{{ page.paper }},
   title     = {{ "{" }}{{ t }}},
