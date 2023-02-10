@@ -11,20 +11,25 @@ group: "teaching"
 ---
 
 # Current teaching
+[CS361 - Systems Programming](https://cs474-uic.github.io/cs361-s23-site/)
 
-**CS473:  Compiler Design**
 
 # Past teaching
+
+### CS473 - Compiler Design
+* [Fall 2022](https://cs474-uic.github.io/cs473-f22-site/)
 
 ### CS474 - Object-Oriented Languages and Environments
 * [Fall 2021](https://cs474-uic.github.io/cs474-fall2021-site/)
 * [Fall 2020](https://cs474-uic.github.io/cs474-fall2020-site/)
 * [Fall 2019](https://luisggpina.github.io/cs474-2019-site/)
 
-### CS454 - Principles of Concurrent Programming (CS494 before 2022)
+### CS454 - Principles of Concurrent Programming* 
 * [Spring 2022](https://cs474-uic.github.io/cs454-spring2022-site/)
 * [Spring 2021](https://cs474-uic.github.io/cs494-spring2021-site/)
 * [Spring 2020](https://luisggpina.github.io/cs494-s20-site/)
+
+*CS494 before 2022
 
 ### Other
 * [Software Reliability (440)](http://multicore.doc.ic.ac.uk/SoftwareReliability/2016-2017/)
