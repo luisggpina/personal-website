@@ -1,3 +1,50 @@
+rumsevicius23sinatra:
+  title:
+    plain:  "Sinatra: Stateful Instantaneous Updates for Commercial Browsers through Multi-Version eXecution"
+  projects:
+  authors:
+    - urumsevicius
+    - svenkateshwaran
+    - ekidane
+    - me
+  publication:
+    type:      conference
+    publisher: "Schloss Dagstuhl – Leibniz-Zentrum für Informatik"
+    nth:    "37th"
+    title:
+      full:    "European Conference on Object-Oriented Programming"
+      short:   "ECOOP"
+    location:  "Seattle, WA, USA"
+    date:      "July, 2023"
+  artifact: https://doi.org/10.5281/zenodo.7647070
+  github: bitslab/sinatra
+  downloads:
+    pdf:    rumsevicius23sinatra.pdf
+  abstract: "Browsers are the main way in which most users experience the internet, which makes them a prime target for malicious entities. The best defense for the common user is to keep their browser always up-to-date, installing updates as soon as they are available. Unfortunately, updating a browser is disruptive as it results in loss of user state. Even though modern browsers reopen all pages (tabs) after an update to minimize inconvenience, this approach still loses all local user state in each page (e.g., contents of unsubmitted forms, including associated JavaScript validation state) and assumes that pages can be refreshed and result in the same contents. We believe this is an important barrier that keeps users from updating their browsers as frequently as possible.
+
+
+In this paper, we present the design, implementation, and evaluation of SINATRA, which supports instantaneous browser updates that do not result in any data loss through a novel Multi-Version eXecution (MVX) approach for JavaScript programs. SINATRA works in pure JavaScript, does not require any browser support, thus works on closed-source browsers, and requires trivial changes to each target page, that can be automated. First, SINATRA captures all the non-determinism available to a JavaScript program (e.g., event handlers executed, expired timers, invocations of Math.random). Our evaluation shows that SINATRA requires 6MB to store such events, and the memory grows at a modest rate of 256KB/s as the user keeps interacting with each page. When an update becomes available, SINATRA transfer the state by re-executing the same set of non-deterministic events on the new browser. During this time, which can be as long as 1.5 seconds, SINATRA uses MVX to allow the user to keep interacting with the old browser. Finally, SINATRA changes the roles in less than 10ms, and the user starts interacting with the new browser, effectively performing a browser update with zero downtime and no loss of state."
+arvan22emnlp:
+  title:
+    plain:  "Reproducibility in Computational Linguistics: Is Source Code Enough?"
+  projects:
+  authors:
+    - marvan
+    - me
+    - nparde
+  publication:
+    type:      conference
+    publisher: Association for Computational Linguistics
+    nth:    "2022"
+    title:
+      full:    "Empirical Methods in Natural Language Processing"
+      short:   "EMNLP"
+    location:  "Abu Dhabi, United Arab Emirates"
+    date:      "December, 2022"
+  downloads:
+    pdf:    arvan22emnlp.pdf
+    artifact: https://zenodo.org/record/6728628
+  abstract: "The availability of source code has been put forward as one of the most critical factors for improving the reproducibility of scientific research. This work studies trends in source code availability at major computational linguistics conferences, namely, ACL, EMNLP, LREC, NAACL, and COLING. We observe positive trends, especially in conferences that actively promote reproducibility. We follow this by conducting a reproducibility study of eight papers published in EMNLP 2021, finding that source code releases leave much to be desired. Moving forward, we suggest all conferences require self-contained artifacts and provide a venue to evaluate such artifacts at the time of publication. Authors can include small-scale experiments and explicit scripts to generate each result to improve the reproducibility of their work."
 kukucka22confetti:
   title:
     plain:  "CONFETTI: Amplifying Concolic Guidance for Fuzzers"
