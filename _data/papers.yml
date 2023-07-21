@@ -20,7 +20,7 @@ rumsevicius23sinatra:
   github: bitslab/sinatra
   downloads:
     pdf:    rumsevicius23sinatra.pdf
-    slides: rumsevicius23sinatra-slides.pdf
+    slides: rumsevicius23sinatra-talk.pdf
   abstract: "Browsers are the main way in which most users experience the internet, which makes them a prime target for malicious entities. The best defense for the common user is to keep their browser always up-to-date, installing updates as soon as they are available. Unfortunately, updating a browser is disruptive as it results in loss of user state. Even though modern browsers reopen all pages (tabs) after an update to minimize inconvenience, this approach still loses all local user state in each page (e.g., contents of unsubmitted forms, including associated JavaScript validation state) and assumes that pages can be refreshed and result in the same contents. We believe this is an important barrier that keeps users from updating their browsers as frequently as possible.
 
 
