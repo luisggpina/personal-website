@@ -1,0 +1,13 @@
+{% if student.url != nil %}
+<b><a href="{{ student.url }}" target="_blank">{{ student.name }}</a></b>.
+{% elsif student.linkedin != nil %}
+<b><a href="https://www.linkedin.com/in/{{ student.linkedin }}" target="_blank">{{ student.name }}</a></b>.
+{% else %}
+<b>{{ student.name }}</b>.
+{% endif %}
+Started on {{ student.start}}{% if student.end != null %}, ended on {{ student.end }}{% endif %};
+{% if student.end != null %} worked on {% else %} working on {% endif %}
+{% for p in student.projects %}
+    {% assign project = site.data.projects[p] %}
+    <a href="projects/{{ p }}.html">{{ project.title }}</a>{% endfor %}.
+{% if student.nowat != null %} Now at {{ student.nowat }}.{% endif %}

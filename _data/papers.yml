@@ -2,6 +2,7 @@ rumsevicius23sinatra:
   title:
     plain:  "Sinatra: Stateful Instantaneous Updates for Commercial Browsers through Multi-Version eXecution"
   projects:
+    - mvxhll
   authors:
     - urumsevicius
     - svenkateshwaran
@@ -30,6 +31,7 @@ arvan22emnlp:
   title:
     plain:  "Reproducibility in Computational Linguistics: Is Source Code Enough?"
   projects:
+    - nlprepro
   authors:
     - marvan
     - me
@@ -50,7 +52,8 @@ arvan22emnlp:
 kukucka22confetti:
   title:
     plain:  "CONFETTI: Amplifying Concolic Guidance for Fuzzers"
-  projects: paramfuzzing
+  projects: 
+    - fuzzprops
   authors:
     - jkukucka
     - me

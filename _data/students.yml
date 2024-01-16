@@ -1,0 +1,190 @@
+# PhD
+jwiseman:
+  name: Joseph Wiseman
+  start: Fall 2024
+  level: phd
+  projects:
+    - fuzzprops
+jcoultas:
+  name: Jesse Coultas
+  start: Fall 2020
+  level: phd
+  projects:
+    - fuzzprops
+  url: https://jessecoultas.com/ 
+dschwartz:
+  name: David Schwartz
+  start: Fall 2021
+  level: phd
+  projects:
+    - mvxhll
+  linkedin: david-schwartz-027011116
+jcoultas:
+  name: Jesse Coultas
+  start: Fall 2020
+  level: phd
+  projects:
+    - fuzzprops
+  url: https://jessecoultas.com/ 
+# MS with thesis
+dwoloch:
+  name: David Woloch
+  start: Fall 2021
+  level: mst
+  thesis:
+      defended:
+      file:
+  projects:
+    - mvxhll
+  linkedin: davidwoloch
+  end: Fall 2021
+  nowat: JP Morgan Chase
+# MS
+akwshik:
+  name: Ankith Kowshik
+  type: ms
+  start: Summer 2022
+  level: ms
+  end: Fall 2023
+  projects:
+    - mvxhll
+  linkedin: ankith-c-kowshik-306860168
+  nowat: Cisco
+jpereira:
+  name: Jason Pereira
+  type: ms
+  start: Fall 2022
+  level: ms
+  end: Spring 2023
+  projects:
+    - mvxhll
+  linkedin: jason-pereira-085151192
+mshah:
+  name: Meer Shah
+  type: ms
+  start: Fall 2022
+  level: ms
+  end: Spring 2023
+  projects:
+    - mvxhll
+  linkedin: meer2607
+  nowat: Actico
+urumsevicius:
+  name: Ugnius Rumsevicius
+  type: ms
+  start: Fall 2021
+  level: ms
+  end: Summer 2023
+  projects:
+    - mvxhll
+  nowat: EDX Markets
+  url: https://ugni.us/
+mrahman:
+  name: Maazur Rahman
+  type: ms
+  start: Fall 2022
+  level: ms
+  end: Fall 2023
+  projects:
+    - mvxhll
+  linkedin: maazur
+amekka:
+  name: Alekh Mekka
+  type: ms
+  start: Fall 2021
+  level: ms
+  end: Summer 2023
+  projects:
+    - fuzzprops
+fahmad:
+  name: Fahad Ahmad
+  type: ms
+  start: Spring 2022
+  level: ms
+  end: Fall 2022
+  projects:
+    - mvxhll
+  linkedin: fahad24
+  nowat: FastModel Sports
+lli:
+  name: Linfeng Li
+  type: ms
+  start: Fall 2021
+  level: ms
+  end: Fall 2021
+  projects:
+    - mvxhll
+  linkedin: linfengl
+  nowat: Google
+ekidane:
+  name: Ellen Kidane
+  type: ms
+  start: Fall 2021
+  level: ms
+  end: Spring 2022
+  projects:
+    - mvxhll
+  linkedin: ellen-kidane
+  nowat: UIC CS department
+svenkateshwaran:
+  name: Siddhanth Venkateshwaran
+  type: ms
+  start: Spring 2021
+  level: ms
+  end: Fall 2021
+  projects:
+    - mvxhll
+  linkedin: siddhanth-venkateshwaran
+  nowat: Salesforce
+# BS
+emendonza:
+  name: Emily Mendonza
+  level: bs
+  start: Fall 2023
+  projects:
+    - mvxhll
+  linkedin: emily-v-mendoza37
+ldesantos:
+  name: Luis de Santos
+  level: bs
+  start: Fall 2023
+  projects:
+    - mvxhll
+  linkedin: ldesantos1501
+zfarin:
+  name: Zara Farin
+  level: bs
+  start: Spring 2022
+  end: Fall 2023
+  projects:
+    - fuzzprops
+  linkedin: zarafarin
+  nowat: Microsoft
+sshamasa:
+  name: Spanya Shamasa
+  level: bs
+  start: Spring 2021
+  end: Spring 2021
+  projects:
+    - mvxhll
+  linkedin: spanyashamasa
+  nowat: Groupon
+vlaudando:
+  name: Vittoria Laudando
+  level: bs
+  start: Spring 2021
+  end: Spring 2021
+  projects:
+    - mvxhll
+  linkedin: vittorialaudando
+  nowat: Mediaocean
+wcygan:
+  name: Will Cygan
+  level: bs
+  start: Fall 2020
+  end: Fall 2021
+  projects:
+    - fuzzprops
+  linkedin: wcygan
+  url: https://www.wcygan.io/
+  nowat: LinkedIn

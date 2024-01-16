@@ -28,7 +28,7 @@ layout: default
 	<h2> Links </h2>
 	<ul>
 		{% for link in project.links %}
-			<li> <a href={{ link.url }}>{{ link.name }}</a> </li>
+			<li> <a href="{{ link.url }}" target="_blank">{{ link.name }}</a> </li>
 		{% endfor %}
 	</ul>
 {% endif %}
@@ -43,3 +43,32 @@ layout: default
 			{% include paper_bibline.html %}
 		{% endif %}
   {% endfor %}
+
+{% assign authors = nil %}
+{% for paper_key_val in site.data.papers %}
+    {% assign paper = paper_key_val[1] %}
+    {% assign key   = paper_key_val[0] %}
+    {% if paper.projects contains page.project %}
+        {% assign authors = authors | concat: paper.authors %}
+    {% endif %}
+{% endfor %}
+
+{% if authors != nil %}
+    {% assign authors = authors | sort | uniq %}
+{% endif %}
+
+<h2> Authors </h2>
+
+{% for s in authors %}
+  {% assign author = site.data.students[s] %}
+  {% if author == nil %}
+      {% assign author = site.data.authors[s] %}
+  {% endif %}
+  {% if author.url != nil %}
+      <a href="{{ author.url }}" target="_blank">{{ author.name }}</a>
+  {% elsif author.linkedin != nil %}
+      <a href="https://www.linkedin.com/in/{{ author.linkedin }}" target="_blank">{{ author.name }}</a>
+  {% else %}
+      {{ author.name }}
+  {% endif %}<br/>
+{% endfor %}

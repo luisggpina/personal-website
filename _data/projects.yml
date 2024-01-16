@@ -1,6 +1,25 @@
+mvxhll:
+  title: "Multi-Version eXecution for Managed Languages"
+  active: yes
+  links:
+    - name: "Funding: NSF award 2227183 (SHF Small)"
+      url:  "https://www.nsf.gov/awardsearch/showAward?AWD_ID=2227183"
+    - name: "News coverage by the UIC CS department"
+      url:  "https://cs.uic.edu/news-stories/pina-expands-use-of-computer-tool-to-commonly-used-programming-languages/"
+
+fuzzprops:
+  title: "Principles of Fuzz and Property Testing"
+  active: yes
+  links: []
+
+nlprepro:
+  title: "Reproducibility in NLP research"
+  active: yes
+  links: []
+
 varan:
   title: "Varan - Multi-version execution"
-  active: yes
+  active: no
   links:
     - name: "SRG homepage for Varan"
       url:  "https://srg.doc.ic.ac.uk/projects/varan/"
@@ -8,7 +27,7 @@ varan:
       url:  "http://blog.regehr.org/archives/1282"
 rubah:
   title: "Rubah - Dynamic Software Updating for Java"
-  active: yes
+  active: no
   links:
     - name: "Rubah @ github"
       url:  "https://github.com/plum-umd/rubah"
