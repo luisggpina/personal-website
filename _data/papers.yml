@@ -107,6 +107,7 @@ pina19mvedsua:
   title:
     plain:  "MVEDSUa: Higher Availability Dynamic Software Updates via Multi-Version Execution"
   projects:
+    - varan
   authors:
     - me
     - aandronidis
