@@ -45,10 +45,12 @@ focusing on [making Dynamic Software Updates (DSU) practical]({{ site.baseurl }}
 	<tr>
 		<td style="vertical-align: top; font-weight: bold; padding-right: 10px;">Address:</td>
 		<td>
-            Department of Computer Science<br/>
-            University of Illinois at Chicago<br/>
-            851 S. Morgan Street<br/>
-            Chicago, IL 60607-7053, USA<br>
+            (CDRLC) Computer Design Research and Learning Center<br/>
+            Room 4448<br/>
+            850 W. Taylor St.<br/>
+            MC 152 / Bldg. 649<br/>
+            Chicago, IL 6067<br/>
+            USA
 		</td>
 	</tr>
 	<tr>
