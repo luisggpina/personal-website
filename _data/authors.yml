@@ -65,3 +65,13 @@ nparde:
   name: Natalie Parde
   bibtex: "Parde, Natalie"
   url: https://www.natalieparde.com/
+dschwartz:
+  name: David Schwartz
+  bibtex: "Schwartz, David"
+  linkedin: "david-schwartz-027011116"
+akowshik:
+  name: Ankith Kowshik
+  bibtex: "Kowshik, Ankith"
+  projects:
+    - mvxhll
+  linkedin: ankith-c-kowshik-306860168
