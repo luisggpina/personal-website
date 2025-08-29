@@ -1,17 +1,17 @@
 # PhD
+fsaif:
+  name: Farhan Saif
+  start: Fall 2024
+  level: phd
+  projects:
+    - mvxhll
+  url: https://farhansaif.xyz/
 jwiseman:
   name: Joseph Wiseman
   start: Fall 2024
   level: phd
   projects:
     - fuzzprops
-jcoultas:
-  name: Jesse Coultas
-  start: Fall 2020
-  level: phd
-  projects:
-    - fuzzprops
-  url: https://jessecoultas.com/ 
 dschwartz:
   name: David Schwartz
   start: Fall 2021
@@ -27,9 +27,30 @@ jcoultas:
     - fuzzprops
   url: https://jessecoultas.com/ 
 # MS with thesis
+amasuric:
+  name: Antonio Masuric
+  start: Summer 2025
+  level: mst
+  thesis:
+      defended:
+      file:
+  projects:
+    - fuzzprops
+  linkedin: antonio-marusic-9ab352251
+asiddiqui:
+  name: Ali Siddiqui
+  start: Summer 2024
+  level: mst
+  thesis:
+      defended:
+      file:
+  projects:
+    - mvxhll
+  end: Spring 2025
+  nowat: Oracle
 dwoloch:
   name: David Woloch
-  start: Fall 2021
+  start: Summer 2021
   level: mst
   thesis:
       defended:
@@ -37,7 +58,7 @@ dwoloch:
   projects:
     - mvxhll
   linkedin: davidwoloch
-  end: Fall 2021
+  end: Spring 2022
   nowat: JP Morgan Chase
 # MS
 akwshik:
@@ -137,10 +158,41 @@ svenkateshwaran:
   linkedin: siddhanth-venkateshwaran
   nowat: Salesforce
 # BS
+miqbal:
+  name: Maaz Iqbal
+  level: bs
+  start: Summer 2025
+  projects:
+    - mvxhll
+  linkedin: maaz-iqbal-567588295/
+lchen:
+  name: Lei Chen
+  level: bs
+  start: Summer 2024
+  end: Fall 2025
+  projects:
+    - mvxhll
+  linkedin: lei-chen-uic
+shoberg:
+  name: Spencer Hoberg
+  level: bs
+  start: Summer 2024
+  end: Fall 2024
+  projects:
+    - mvxhll
+cwest:
+  name: Catherine West
+  level: bs
+  start: Summer 2024
+  end: Fall 2024
+  projects:
+    - mvxhll
+  linkedin: theclwest
 emendonza:
   name: Emily Mendonza
   level: bs
   start: Fall 2023
+  end: Spring 2024
   projects:
     - mvxhll
   linkedin: emily-v-mendoza37
@@ -148,9 +200,11 @@ ldesantos:
   name: Luis de Santos
   level: bs
   start: Fall 2023
+  end: Spring 2024
   projects:
     - mvxhll
   linkedin: ldesantos1501
+  nowat: AtomAI Solutions
 zfarin:
   name: Zara Farin
   level: bs
