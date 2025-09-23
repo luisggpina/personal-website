@@ -49,13 +49,13 @@ focusing on [making Dynamic Software Updates (DSU) practical]({{ site.baseurl }}
             Room 4448<br/>
             850 W. Taylor St.<br/>
             MC 152 / Bldg. 649<br/>
-            Chicago, IL 6067<br/>
+            Chicago, IL 60607<br/>
             USA
 		</td>
 	</tr>
 	<tr>
 		<td style="vertical-align: top; font-weight: bold; padding-right: 10px;">Office:</td>
-        <td> Science and Engineering Offices, Room 1340</td>
+        <td> (CDRLC) Computer Design Research and Learning Center, Room 4448</td>
 	</tr>
 </table>
 
