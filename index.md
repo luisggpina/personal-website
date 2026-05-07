@@ -126,9 +126,14 @@ My research is generously supported by the following grants:
 **Current**: [CS454 - Principles of Concurrent Programming](https://cs474-uic.github.io/cs454-s26-site/)
 
 * CS361 - Systems Programming: [Spring 2023](https://cs474-uic.github.io/cs361-s23-site/)
-* CS454 - Principles of Concurrent Programming: [Spring 2026](https://cs474-uic.github.io/cs454-s26-site/), [Spring 2024](https://cs474-uic.github.io/cs454-s24-site/), [Spring 2022](https://cs474-uic.github.io/cs454-spring2022-site/)
-* [Spring 2025](https://cs474-uic.github.io/cs454-s25-site/), [Spring 2024](https://cs474-uic.github.io/cs454-s24-site/), [Spring 2022](https://cs474-uic.github.io/cs454-spring2022-site/)
-    * CS494 - Principles of Concurrent Programming: [Spring 2021](https://cs474-uic.github.io/cs494-spring2021-site/), [Spring 2020](https://luisggpina.github.io/cs494-s20-site/)
+* CS454 - Principles of Concurrent Programming:
+[Spring 2026](https://cs474-uic.github.io/cs454-s26-site/), 
+[Spring 2025](https://cs474-uic.github.io/cs454-s25-site/),
+[Spring 2024](https://cs474-uic.github.io/cs454-s24-site/), 
+[Spring 2022](https://cs474-uic.github.io/cs454-spring2022-site/)
+    * CS494 - Principles of Concurrent Programming:
+[Spring 2021](https://cs474-uic.github.io/cs494-spring2021-site/),
+[Spring 2020](https://luisggpina.github.io/cs494-s20-site/)
 * CS473 - Compiler Design: [Fall 2025](https://cs474-uic.github.io/cs473-f25-site/), [Fall 2024](https://cs474-uic.github.io/cs473-f24-site/), [Fall 2022](https://cs474-uic.github.io/cs473-f22-site/)
 * CS474 - Object-Oriented Languages and Environments: [Fall 2021](https://cs474-uic.github.io/cs474-fall2021-site/), [Fall 2020](https://cs474-uic.github.io/cs474-fall2020-site/), [Fall 2019](https://luisggpina.github.io/cs474-2019-site/)
 * Software Reliability (440) at Imperial College London: [Fall 2016](http://multicore.doc.ic.ac.uk/SoftwareReliability/2016-2017/)
