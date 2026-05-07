@@ -1,3 +1,54 @@
+schwartz26rto:
+  title:
+    plain:  "Optimizing Record/Replay through Relaxed Total Ordering and Multi-Version eXecution"
+  projects:
+    - mvxhll
+  authors:
+    - dschwartz
+    - me
+  publication:
+    type:      conference
+    publisher: "Schloss Dagstuhl – Leibniz-Zentrum für Informatik"
+    nth:    "40th"
+    title:
+      full:    "European Conference on Object-Oriented Programming"
+      short:   "ECOOP"
+    location:  "Brussels, Belgium"
+    date:      "June, 2026"
+  artifact: https://zenodo.org/records/19643217
+  github: bitslab/jmvx/tree/rto
+  downloads:
+    pdf:    schwartz26rto.pdf
+  abstract: "
+  Record/Replay (RR) allows developers to record an execution and then replay it exactly as it was
+recorded. RR enables deterministic replay of non-deterministic behaviors in a different environment
+than the one used for the recording, which can capture complex bugs in production and find the
+root cause during development. Unfortunately, support for RR still introduces a non-negligible
+amount of performance overhead, which limits its applicability. Two main sources of such overhead in
+state-of-the-art RR systems are: multi-threading, and I/O bound workloads. To ensure high-fidelity
+when replaying multi-threading execution, recordings either capture the total order of events, which
+the replayer then enforces, or capture a partial order that requires further processing before replay.
+Recording also effectively doubles the I/O performed as the recorder needs to perform the original
+I/O and then record it to a log. Such increased I/O severely limits the performance of I/O dominated
+workloads.
+
+In this paper, we present two complimentary techniques to reduce the overhead of RR. First, we
+introduce Relaxed Total Order (RTO), an online-computable weakening of total order that preserves
+the cross-thread constraints needed for replay while avoiding unnecessary serialization. We design
+RTO to be compatible with Multi-Version eXecution (MVX), enabling online deterministic replay
+without pre-processing the recording log or heavyweight coordination. We formalize RTO’s strictness
+and correctness, showing that it is a novel point between partial- and total-order. Our prototype
+implementation on top of an existing state-of-the-art RR system reduces recording overhead from
+21.0% to 15.3% and halves replay overhead from 67.5% to 31.7%.
+
+Second, we combine RR with Multi-Version eXecution (MVX) to eliminate RR’s poor performance
+on I/O-bound workloads. Our hybrid design uses a follower variant to absorb the extra I/O needed
+for logging, and to backfill as much I/O as possible from the same underlying system, keeping the
+user-facing leader off the critical path. Our prototype reduces the overhead required to record I/O
+bound programs from 192.5% to just 25.5%, without penalizing other more common workloads.
+Together, RTO and hybrid MVX/RR substantially narrow the gap between today’s RR systems
+and practical, low-overhead, always-on deployment.
+  "
 schwartz24jmvx:
   title:
     plain:  "Jmvx: Fast Multi-threaded Multi-version Execution and Record-Replay for Managed Languages"
