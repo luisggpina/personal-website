@@ -1,3 +1,46 @@
+pythonmm:
+  hidden: "True"
+  title:
+    plain:  "Understanding Python's de-facto Memory Model"
+  projects:
+  authors:
+    - me
+  publication:
+    type:      submission
+  downloads:
+    pdf:    pythonmm.pdf
+  abstract: "
+Since version 0.9.0, the reference implementation of the Python programming language — CPython— uses a Global Interpreter Lock (GIL) to limit concurrency to only one thread executing at any time. Even if unintended, the presence of the GIL provides some guarantees to multi-threaded Python programs, which have been reliably true at least for the past 35 years. Such guarantees are, unfortunately, not well understood, which cause some multi-threaded Python programs to work reliably on all versions of Python since 0.9.0 based on some behaviors of the GIL. Without understanding exactly the de-facto guarantees historically provided by Python’s GIL in practice, removing the GIL may cause existing programs to break unexpectedly for unknown reasons. Even if developers are willing to fix their multi-threaded Python programs, there’s little guidance explaining what worked before and why it breaks now.
+
+In this paper, we describe that Python’s de-facto GIL-based behavior matches Sequentially Consistency (SC), based on a formal model of a language that captures the GIL discipline enforced by GIL-based Python interpreters. Our model also explains the conditions under which native function calls are atomic, which include most operations on lists, sets, and dictionaries. We validate that our model matches the observed behavior of existing GIL-based implementations using empirical data from litmus testing (memory model) and linearizability checking (builtin data-structures) on CPython, PyPy, and GraalPy. Furthermore, we manually analyze 100 popular Python repositores that use multiple threads, and find evidence that developers rely on SC behavior for shared variables, and on atomic behavior for most list, set, and dictionary operations.
+
+We extend our testing to Python implementations not based on a GIL: CPython’s prototype for PEP 703 (which paves the way for removing the GIL from CPython), Jython, and IronPython. We find that only IronPython is not SC, exposing Python programs to the underlying .NET memory model. We also find that lists, sets, and dictionaries allow new behaviors impossible to observe while using a GIL. We reported our findings to the developers, and used the feedback to perform root-cause analysis on representative violations. One of our reports was a real bug that the developers fixed and backported to earlier Python version. All other issues remain open at the time of writing, as developers consider the implications of such behaviors.
+  "
+coultas26propcov:
+  title:
+    plain:  "PropCov: Effective Coverage Reporting for Property-Based Testing"
+  projects:
+    - fuzzprops
+  authors:
+    - jcoultas
+    - jwiseman
+    - me
+  publication:
+    type:      conference
+    publisher: "ACM SIGSOFT"
+    nth:       "35th"
+    title:
+      full:    "International Symposium on Software Testing and Analysis"
+      short:   "ISSTA"
+    location:  "Oakland, California, USA"
+    date:      "October, 2026"
+  downloads:
+    pdf:    coultas26propcov.pdf
+  abstract: "
+Property-base testing (PBT), introduced by Haskell’s Quickcheck, is becoming more popular with successful ports for other languages, such as Java’s junit-quickcheck. With PBT, developers write a property test and a data generator. The data generator takes a source of non-determinism and uses it to output well-formed data. The property test exercises the System Under Test (SUT) using the random well-formed data from the generator to ensure a particular property always holds (e.g., data serialized and deserialized should be equal to the original data). The PBT framework then performs many trials, each generating fresh data and executing the property test. A test failure shows a bug to developers, typically in edge-cases. A passing test gives some assurance on the quality of the SUT with regards to the property being tested. Unfortunately, well-known test coverage tools that are instrumental for understanding unit testing work poorly for PBT.
+
+In this paper, we present PropCov, a tool for understanding coverage in PBT that also provides suggestions for coverage improvement. PropCov employs a novel combination of static analysis with PBT to approximate the maximum possible coverage, providing an effective measure of the PBT coverage and making suggestions to developers of where to improve existing tests. PropCov features an easily extensible architecture that can support new languages, build systems, and PBT frameworks. We evaluated PropCov using 25 Java projects using junit-quickcheck or jqwik, totaling 293 properties, and found that existing tools report missed coverage that is impossible to reach (86% of lines that JaCoCo reports as not covered), which leads developers to consider hundreds of extra lines of code (2910). Unlike existing coverage tools, PropCov results are accurate — only 7.5% of all properties contain unfeasible code, and PropCov only misses 4% of reachable code. Using PropCov’s suggestions, we increased the coverage of 42 tests over 7 projects and found 4 new bugs in 4 projects.
+  "
 schwartz26rto:
   title:
     plain:  "Optimizing Record/Replay through Relaxed Total Ordering and Multi-Version eXecution"

@@ -18,6 +18,9 @@ group: "research"
 		{% assign header = true	%}
 		{% for paper_key_val in site.data.papers %}
 			{% assign paper = paper_key_val[1] %}
+            {% if paper.hidden == "True" %}
+                {% continue %}
+            {% endif %}
 			{% assign key = paper_key_val[0] %}
 			{% assign p = paper.publication %}
 			{% assign paper_year = p.date | date: '%Y' | plus: '0' %}
