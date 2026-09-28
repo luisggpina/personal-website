@@ -1,11 +1,4 @@
 # PhD
-fsaif:
-  name: Farhan Saif
-  start: Fall 2024
-  level: phd
-  projects:
-    - mvxhll
-  url: https://farhansaif.xyz/
 jwiseman:
   name: Joseph Wiseman
   start: Fall 2024
@@ -15,10 +8,12 @@ jwiseman:
 dschwartz:
   name: David Schwartz
   start: Fall 2021
+  end: Spring 2026
   level: phd
   projects:
     - mvxhll
   linkedin: david-schwartz-027011116
+  nowat: Air-Force Research Laboratory
 jcoultas:
   name: Jesse Coultas
   start: Fall 2020
@@ -61,6 +56,13 @@ dwoloch:
   end: Spring 2022
   nowat: JP Morgan Chase
 # MS
+fsaif:
+  name: Farhan Saif
+  start: Fall 2024
+  level: msp
+  projects:
+    - mvxhll
+  url: https://farhansaif.xyz/
 akwshik:
   name: Ankith Kowshik
   type: ms
@@ -158,6 +160,12 @@ svenkateshwaran:
   linkedin: siddhanth-venkateshwaran
   nowat: Salesforce
 # BS
+ggalan:
+  name: Giselle Galan
+  level: bs
+  start: Summer 2026
+  projects:
+    - mvxhll
 miqbal:
   name: Maaz Iqbal
   level: bs
